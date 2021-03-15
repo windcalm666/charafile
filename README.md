@@ -1,24 +1,41 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usersテーブル
 
-Things you may want to cover:
+|  Column            |  Type  |  Options                  |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false, unique: true |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
 
-* Ruby version
+### Association
+- has_many :characters
+- has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+- has_many :followings, through: :active_relationships, source: :follower
+- has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+- has_many :followers, through: :passive_relationships, source: :following
 
-* System dependencies
+## Relationshipsテーブル
 
-* Configuration
+|  Column           |  Type      |  Options    |
+| ----------------- | ---------- | ----------- |
+| following_id      | references | null: false |
+| follower_id       | references | null:false  |
 
-* Database creation
+### Association
+- belongs_to :following, class_name: "User"
+- belongs_to :follower, class_name: "User"
 
-* Database initialization
+## Charactersテーブル
 
-* How to run the test suite
+|  Column        |  Type        |  Options          |
+| -------------- | ------------ | ----------------- |
+| name           | string       | null: false       |
+| system_id      | integer      | null: false       |
+| user           | references   | foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- has_many :cthulhus
+- has_many :sw25s
+- has_many :shinobigamis
