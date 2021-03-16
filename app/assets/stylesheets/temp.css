@@ -1,0 +1,81 @@
+.header-bar {
+  width: 100vw;
+  height: 120px;
+  padding: 0 100px 0 50px;
+  background-color: #7acbe1;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-contents {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-form {
+  height: 35px;
+  width: 300px;
+  display: flex;
+  margin-right: 20px;
+}
+
+.search-text {
+  width: 100%;
+  padding-left: 5px;
+  border:1px solid black;
+}
+
+.search-btn {
+  width: 50px;
+  margin-left: 10px;
+  border: none;
+  color: #ffffff;
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
+  background-color: #009bc6;
+}
+
+.app-title a {
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.right-contents {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mypage a, .log-out a{
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
+  font-size: 18px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 10px;
+}
+
+
+footer {
+  padding:16px;
+  width: 100vw;
+  height: 60px;
+  text-align: center;
+}
+
+/*body {
+  background-image: url(/app/assets/images/backimage-sq.png);
+  background-repeat: repeat;
+}*/
+
+p {
+  color: #7e7e7e;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+}
