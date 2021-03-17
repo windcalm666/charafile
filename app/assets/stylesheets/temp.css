@@ -1,8 +1,12 @@
+body {
+  background-color: #7acbe1;
+}
+
 .header-bar {
   width: 100vw;
-  height: 120px;
+  height: 100px;
   padding: 0 100px 0 50px;
-  background-color: #7acbe1;
+  background-color: #009bc6;
   display:flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +29,7 @@
 .search-text {
   width: 100%;
   padding-left: 5px;
-  border:1px solid black;
+  border:1px solid gray;
 }
 
 .search-btn {
@@ -33,46 +37,59 @@
   margin-left: 10px;
   border: none;
   color: #ffffff;
-  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
-  background-color: #009bc6;
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro",sans-serif;
+  background-color: #98cc65c7;
 }
 
 .app-title a {
-  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro",sans-serif;
   font-size: 30px;
   color: #ffffff;
 }
 
 .right-contents {
   width: 30%;
+  height: 70px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.mypage a, .log-out a{
-  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro";
-  font-size: 18px;
+.mypage a, .log-out a, .follow-user a, .follower-user a{
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro",sans-serif;
+  font-size: 16px;
   color: #ffffff;
-  border: 1px solid #ffffff;
   padding: 10px;
+  background-color: #98cc65c7;
 }
 
+.relationship {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-user a, .follower-user a {
+  font-size: 10px;
+  padding: 5px;
+}
+
+.follow-user {
+  margin-bottom: 5px;
+}
 
 footer {
   padding:16px;
   width: 100vw;
   height: 60px;
+  margin: 0 auto;
   text-align: center;
+  background-color: #009bc6;
 }
 
-/*body {
-  background-image: url(/app/assets/images/backimage-sq.png);
-  background-repeat: repeat;
-}*/
-
 p {
-  color: #7e7e7e;
+  color: #ffffff;
   font-size: 16px;
 }
 

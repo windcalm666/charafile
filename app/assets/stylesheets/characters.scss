@@ -1,3 +1,93 @@
-// Place all the styles related to the characters controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper {
+  height: calc(100vh - 100px - 60px);
+  margin: 0 200px;
+  padding: 30px 20px 50px;
+  background-color:#ffffff;
+}
+
+.new-character {
+  width: 225px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.name-form, .system-select {
+  padding: 0 10px;
+  width: 100%;
+  margin-bottom: 3px;
+  border: 1px solid gray;
+}
+
+.create-character-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.image-file, .create-btn {
+  font-size: 15px;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+  color: #ffffff;
+  background-color: #98cc98;
+  padding: 5px;
+  border: none;
+  display: block;
+}
+
+
+.character-index {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.my-character {
+  width: 40%;
+  height: 100%;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:flex-start;
+}
+
+.character-select {
+  width: 225px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 20px;
+  border-bottom: 1px solid #98cc98;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.character-btns {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit-btn, .delete-btn {
+  color: #ffffff;
+  background-color: #98cc98;
+  padding: 5px;
+  border: none;
+  display: block;
+}
+
+.character-sample-image {
+  width: 300px;
+  height: 300px;
+  border: 3px double black;
+}
+
+.hidden {
+  display: none;
+}
