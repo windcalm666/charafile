@@ -1,52 +1,20 @@
 <div class="wrapper">
   <div class="new-character">
-    <div class="new-character-name">
-      <input type="text" placeholder="新規キャラクター名" class="name-form">
-    </div>
-    <div class="system-pull">
-      <select class="system-select">
-        <option>システム選択</option>
-        <option>クトゥルフ神話TRPG</option>
-        <option>ソードワールド2.5</option>
-        <option>シノビガミ</option>
-      </select>
-    </div>
-    <div class="create-character-btn">
-      <label class="image-select">
-        <span class="image-file">立ち絵選択</span>
-        <input type="file" class="hidden">
-      </label>
-      <input type="submit" value="新規作成" class="create-btn">
-    </div>
-  </div>
-  <div class="character-index">
-    <div class="my-character">
-      <div class="my-character-pull">
-        <select class="character-select">
-          <option>キャラクター一覧</option>
-          <option>キャラクター1</option>
-          <option>キャラクター2</option>
-        </select>
+    <h6>新規キャラクター作成</h6>
+    <%= form_with(model: @character, local: true) do |form| %>
+      <div class="new-character-name">
+        <%= form.text_field :name, placeholder: "新規キャラクター名", class: "name-form" %>
       </div>
-      <div class="character-sample-status">
-        <h3>名前</h3>
-        <h4>キャラクター1</h4>
-        <h3>システム</h3>
-        <h4>クトゥルフ神話TRPG</h4>
-        <h3>作成日時<h3>
-        <h4>2019-05-21</h4>
+      <div class="system-pull">
+        <%= form.collection_select(:system_id, System.all, :id, :name, {} ,{class:"system-select"}) %>
       </div>
-      <div class="character-btns">
-        <div class="character-edit">
-          <input type="submit" value="編集" class="edit-btn">
-        </div>
-        <div class="character-delete">
-          <input type="submit" value="削除" class="delete-btn">
-        </div>
+      <div class="create-character-btn">
+        <label class="image-select">
+          <span class="image-file">立ち絵選択</span>
+          <%= form.file_field :image, class: "hidden" %>
+        </label>
+        <%= form.submit "新規作成", class: "create-btn" %>
       </div>
-    </div>
-    <div class="character-sample-image">
-      <img src="backimage-sq.png" alt="サンプル画像">
-    </div>
+    <% end %>
   </div>
 </div>
