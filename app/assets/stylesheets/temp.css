@@ -2,93 +2,78 @@ body {
   background-color: #7acbe1;
 }
 
-.header-bar {
-  width: 100vw;
-  height: 100px;
-  padding: 0 100px 0 50px;
+.wrapper {
+  display: flex;
+}
+
+.side-bar {
+  width: 250px;
+  height: calc(100vh - 60px);
+  padding: 80px 10px 50px;
+  margin:  0 50px ;
   background-color: #009bc6;
   display:flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-.left-contents {
-  width: 60%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.search-form {
-  height: 35px;
-  width: 300px;
-  display: flex;
-  margin-right: 20px;
-}
-
-.search-text {
-  width: 100%;
-  padding-left: 5px;
-  border:1px solid gray;
-}
-
-.search-btn {
-  width: 50px;
-  margin-left: 10px;
-  border: none;
-  color: #ffffff;
+.app-title a,
+.home a,
+.log-out a,
+.follow-user a,
+.follower-user a,
+.user-column {
   font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro",sans-serif;
-  background-color: #98cc65c7;
+  color: #ffffff;
+  padding: 10px;
 }
 
 .app-title a {
-  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro",sans-serif;
   font-size: 30px;
-  color: #ffffff;
+  background-color: #98cc65;
 }
 
-.right-contents {
-  width: 30%;
-  height: 70px;
+.home a, .log-out a, .follow-user a, .follower-user a{
+  font-size: 20px;
+  border-bottom: 2px solid #98cc65;
+}
+
+.user-column {
+  width: 100%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
 }
 
-.mypage a, .log-out a, .follow-user a, .follower-user a{
-  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro",sans-serif;
-  font-size: 16px;
-  color: #ffffff;
-  padding: 10px;
-  background-color: #98cc65c7;
+.user-image {
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff;
 }
 
-.relationship {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.follow-user a, .follower-user a {
-  font-size: 10px;
+.user-name, .user-email {
+  border-bottom: 1px solid #98cc65;
   padding: 5px;
 }
 
-.follow-user {
-  margin-bottom: 5px;
+.user-name {
+  font-size: 15px;
+}
+.user-email {
+  font-size: 12px;
+  color: #ffffff;
 }
 
 footer {
   padding:16px;
-  width: 100vw;
+  width: calc(100vw - 50px);
   height: 60px;
-  margin: 0 auto;
-  text-align: center;
+  margin: 0 auto 0 50px;
+  text-align: right;
   background-color: #009bc6;
 }
 
-p {
+.copy-right {
   color: #ffffff;
   font-size: 16px;
 }

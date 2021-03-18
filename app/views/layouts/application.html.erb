@@ -11,38 +11,10 @@
 
   <body>
     <header>
-      <div class="header-bar">
-        <div class="left-contents">
-          <div class="search-form">
-            <input type="text" placeholder="アカウント名でユーザー検索" class="search-text">
-            <input type="submit" value="検索" class="search-btn">
-          </div>
-          <div class="app-title">
-            <h1><a href="/">キャラファイル</a></h1>
-          </div>
-        </div>
-        <div class="right-contents">
-        <%# ログインしているユーザーのマイページであればマイページの表記を消す %>
-          <div class="mypage">
-            <a href="/">マイページ</a>
-          </div>
-          <div class="relationship">
-            <div class="follow-user">
-              <a href="#">フォロー</a>
-            </div>
-            <div class="follower-user">
-              <a href="#">フォロワー</a>
-           </div>
-          </div>
-          <div class="log-out">
-            <a href="#">ログアウト</a>
-          </div>
-        </div>
-      </div>
     </header>
     <%= yield %>
     <footer>
-      <p>Copyright Charafile 2021.</p>
+      <p class="copy-right">Copyright Charafile 2021.</p>
     </footer>
   </body>
 </html>
