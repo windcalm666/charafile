@@ -1,0 +1,101 @@
+.wrapper {
+  height: calc(100vh - 100px - 60px);
+  margin: 0 200px;
+  padding: 5px 20px 50px;
+  background-color:#ffffff;
+}
+
+.new-character {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px 25px;
+  margin: 0 auto;
+  border: 1px solid #98cc98;
+}
+
+h6 {
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.name-form, .system-select {
+  padding: 0 10px;
+  width: 100%;
+  margin-bottom: 3px;
+  border: 1px solid gray;
+}
+
+.create-character-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.image-file, .create-btn {
+  font-size: 15px;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+  color: #ffffff;
+  background-color: #98cc98;
+  padding: 5px;
+  border: none;
+  display: block;
+}
+
+
+.character-index {
+  width: 100%;
+  padding: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.my-character {
+  width: 40%;
+  height: 100%;
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:flex-start;
+}
+
+.character-select {
+  width: 225px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: 20px;
+  border-bottom: 1px solid #98cc98;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.character-btns {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit-btn, .delete-btn {
+  color: #ffffff;
+  background-color: #98cc98;
+  padding: 5px;
+  border: none;
+  display: block;
+}
+
+.character-sample-image {
+  width: 300px;
+  height: 300px;
+  border: 3px double black;
+}
+
+.hidden {
+  display: none;
+}
