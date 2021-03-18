@@ -1,0 +1,2 @@
+module CthulhusHelper
+end
