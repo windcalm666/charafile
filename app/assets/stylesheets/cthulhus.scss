@@ -1,3 +1,74 @@
-// Place all the styles related to the cthulhus controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.cthulhu-form {
+  width: 70%;
+  margin: 30px 0;
+}
+
+tr, th, td {
+  color: #ffffff;
+  border: 1px solid #98cc65;
+  text-align: center;
+  background-color: #009bc6;
+  padding: 1px;
+}
+
+.cthulhu-status {
+  width: 100%;
+  background-color: #009bc6;
+  padding:3px;
+}
+
+.large-label {
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.label-flex {
+  display: flex;
+  width: 100%;
+    background-color: #98cc65;
+}
+
+h3 {
+  color: #ffffff;
+  background-color: #98cc65;
+  margin-right: 25px;
+}
+
+.form-label {
+  width: 64px;
+  font-size: 13px;
+  color: #ffffff;
+  padding: 2px;
+  text-align: center;
+}
+
+.person {
+  width:97%;
+  margin: 0 1px;
+}
+
+.image-area {
+  height: 250px;
+  width: 200px;
+  background-color: #ffffff;
+}
+
+.long-person {
+  width: 300px;
+}
+
+.short-label {
+  color: #ffffff;
+  text-align: center;
+}
+
+.short-column {
+  width:3em;
+
+  display: block;
+}
+
+.short-person {
+  width: 5em;
+}
