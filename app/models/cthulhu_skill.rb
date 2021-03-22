@@ -1,0 +1,2 @@
+class CthulhuSkill < ApplicationRecord
+end
