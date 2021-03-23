@@ -1,6 +1,8 @@
-class CreateCthulhuSkills < ActiveRecord::Migration[6.0]
+class CreateCocSkills < ActiveRecord::Migration[6.0]
   def change
-    create_table :cthulhu_skills do |t|
+    create_table :coc_skills do |t|
+      t.references :cthulhu, foreign_key: true
+
       t.integer :find_hidden
       t.integer :hearing
       t.integer :first_aid
@@ -26,16 +28,17 @@ class CreateCthulhuSkills < ActiveRecord::Migration[6.0]
       t.integer :horse_ridding
       t.integer :heavy_machine
       t.integer :machine_repair
-      t.integer :electrical_enginearing
+      t.integer :electrical_engineering
       t.integer :computer
       t.integer :library
-      t.integer :photograpy
+      t.integer :photography
       t.integer :picking
       t.integer :swimming
 
       t.integer :medicine
       t.integer :chemistry
       t.integer :pharmacy
+      t.integer :biology
       t.integer :physics
       t.integer :astronomy
       t.integer :archeology
@@ -50,7 +53,7 @@ class CreateCthulhuSkills < ActiveRecord::Migration[6.0]
       t.integer :say
       t.integer :persuade
       t.integer :credit
-      t.integer :psyshology
+      t.integer :psychology
       t.integer :price_cut
       t.string :native_language
       t.integer :native_language_value
@@ -73,7 +76,7 @@ class CreateCthulhuSkills < ActiveRecord::Migration[6.0]
       t.integer :cane
       t.integer :handgun
       t.integer :mythology
-
+      
       t.timestamps
     end
   end

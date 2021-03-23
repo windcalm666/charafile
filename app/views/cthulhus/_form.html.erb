@@ -1,30 +1,33 @@
-<form class="cthulhu-form">
+<%= form_with model: cthulhu, url: cthulhus_path, class: "cthulhu-form", local: true do |form| %>
+
+  <%= render 'layouts/errors', model: cthulhu %>
+
   <div class="base-status">
     <table class="cthulhu-status">
       <tr>
         <th class="form-label">プレイヤー名</th>
-        <th colspan="3"><input type="text" value="ゲルマニウム将軍" class="person"></th>
+        <th colspan="3"><input type="text" value="<%= current_user.nickname %>" readonly class="person"></th>
         <th colspan="2" class="large-label">設定</th>
         <td class="image-area"rowspan="5"><div  class="image-area">画像</div><br>
-        <input type="file"></td>
+        <%= form.file_field :image %></td>
       </tr>
       <tr>
         <th class="form-label">名前</th>
-        <td colspan="3"><input type="text" class="person"></td>
-        <td colspan="2" rowspan="4"><textarea rows="10" class="long-person"></textarea></td>
+        <td colspan="3"><%= form.text_field :name, class: "person" %></td>
+        <td colspan="2" rowspan="4"><%= form.text_area :origin, rows: "10", class: "long-person"%></td>
       </tr>
       <tr>
         <th class="form-label">職業</th>
-        <td colspan="3"><input type="text" class="person"></td>
+        <td colspan="3"><%= form.text_field :job, class: "person" %></td>
       </tr>
       <tr>
         <th class="form-label">年齢</th>
-        <td><input type="text" class="short-person"></td>
-        <td rowspan="2"><textarea rows="4" placeholder="所持品" class="person"></textarea></td>
+        <td><%= form.text_field :age, class: "short-person" %></td>
+        <td rowspan="2"><%= form.text_area :items, rows: "4", placeholder: "所持品", class: "person" %></td>
       </tr>
       <tr>
         <th class="form-label">性別</th>
-        <td><input type="text" class="short-person"></td>
+        <td><%= form.text_field :sex, class: "short-person" %></td>
       </tr>
     </table>
   </div>
@@ -52,21 +55,21 @@
         <th class="short-label">DB</th>
       </tr>
       <tr>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
-        <td><input type="text" class="short-column"></td>
+        <td><%= form.text_field :str, class: "short-column" %></td>
+        <td><%= form.text_field :con, class: "short-column" %></td>
+        <td><%= form.text_field :pow, class: "short-column" %></td>
+        <td><%= form.text_field :dex, class: "short-column" %></td>
+        <td><%= form.text_field :app, class: "short-column" %></td>
+        <td><%= form.text_field :siz, class: "short-column" %></td>
+        <td><%= form.text_field :edu, class: "short-column" %></td>
+        <td><%= form.text_field :int, class: "short-column" %></td>
+        <td><%= form.text_field :idea, class: "short-column" %></td>
+        <td><%= form.text_field :luck, class: "short-column" %></td>
+        <td><%= form.text_field :knowledge, class: "short-column" %></td>
+        <td><%= form.text_field :san, class: "short-column" %></td>
+        <td><%= form.text_field :life_points, class: "short-column" %></td>
+        <td><%= form.text_field :magick_points, class: "short-column" %></td>
+        <td><%= form.text_field :damage_bonus, class: "short-column" %></td>
       </tr>
     </table>
   </div>
@@ -90,168 +93,168 @@
         </tr>
         <tr>
           <th>目星</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :find_hidden, placeholder: "25", class: "short-column" %></td>
           <th>運転</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :driving, placeholder: "20", class: "short-column" %></td>
           <th>医学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :medicine, placeholder: "5", class: "short-column" %></td>
           <th>言いくるめ</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :say,placeholder: "5", class: "short-column" %></td>
           <th>こぶし</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :punch, placeholder: "50", class:"short-column" %></td>
         </tr>
         <tr>
           <th>聞き耳</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :hearing, placeholder: "25", class: "short-column" %></td>
           <th>操縦</th>
           <th></th>
           <th>化学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :chemistry, placeholder: "1", class: "short-column" %></td>
           <th>説得</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :persuade, placeholder: "15", class: "short-column" %></td>
           <th>キック</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :kick, placeholder:"25", class: "short-column" %></td>
         </tr>
         <tr>
           <th>応急手当て</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :first_aid, placeholder: "30", class:"short-column" %></td>
+          <td><%= form.text_field :control_1, placeholder: "操縦", class: "short-person" %></td>
+          <td><%= form.text_field :control_1_value, placeholder: "1", class: "short-column" %></td>
           <th>薬学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :pharmacy, placeholder: "1", class: "short-column" %></td>
           <th>信用</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :credit, placeholder: "10", class: "short-column" %></td>
           <th>頭突き</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :headbutt, placeholder: "10", class: "short-column" %></td>
         </tr>
         <tr>
           <th>精神分析</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :therapy, placeholder:"1",  class: "short-column" %></td>
+          <td><%= form.text_field :control_2, placeholder: "操縦", class: "short-person" %></td>
+          <td><%= form.text_field :control_2_value, placeholder: "1", class: "short-column" %></td>
           <th>生物学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :biology, placeholder: "1", class: "short-column" %></td>
           <th>心理学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :psychology, placeholder: "5", class: "short-column" %></td>
           <th>組み付き</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :assembled, placeholder: "25", class: "short-column" %></td>
         </tr>
         <tr>
           <th>登攀</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :climbing, placeholder: "40", class: "short-column" %></td>
+          <td><%= form.text_field :control_3, placeholder: "操縦", class: "short-person" %></td>
+          <td><%= form.text_field :control_3_value, placeholder: "1", class: "short-column" %></td>
           <th>物理学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :physics, placeholder: "1", class: "short-column" %></td>
           <th>値切り</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :price_cut, placeholder: "5", class: "short-column" %></td>
           <th>ﾏｰｼｬﾙｱｰﾂ</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :martial_arts, placeholder: "1", class: "short-column" %></td>
         </tr>
         <tr>
           <th>跳躍</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :leap, placeholder: "25", class: "short-column" %></td>
           <th>乗馬</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :horse_ridding, placeholder: "5", class: "short-column" %></td>
           <th>天文学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :astronomy, placeholder: "1", class: "short-column" %></td>
           <th>母国語</th>
           <th></th>
           <th>ナイフ</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :knife, placeholder: "20", class: "short-column"%></td>
         </tr>
         <tr>
           <th>投擲</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :throwing, placeholder: "25", class: "short-column" %></td>
           <th>重機械操作</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :heavy_machine, placeholder: "1", class: "short-column" %></td>
           <th>考古学</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :archeology, placeholder: "1", class: "short-column" %></td>
+          <td><%= form.text_field :native_language, placeholder: "母国語", class: "short-person" %></td>
+          <td><%= form.text_field :native_language_value, class: "short-column" %></td>
           <th>日本刀</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :japanese_sword, placeholder: "15", class: "short-column" %></td>
         </tr>
         <tr>
           <th>回避</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :avoidance, class: "short-column" %></td>
           <th>機械修理</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :machine_repair, placeholder: "20", class: "short-column" %></td>
           <th>歴史</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :history, placeholder: "20", class: "short-column" %></td>
           <th>ほかの言語</th>
           <td></td>
           <th>杖</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :cane, placeholder: "25", class: "short-column" %></td>
         </tr>
         <tr>
           <th>隠す</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :conceal, placeholder:"15", class: "short-column" %></td>
           <th>電気工学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :electrical_engineering, placeholder: "1", class: "short-column" %></td>
           <th>人類学</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :anthropology, placeholder: "1", class: "short-column" %></td>
+          <td><%= form.text_field :language_1, placeholder: "ほかの言語", class: "short-person" %></td>
+          <td><%= form.text_field :language_1_value, placeholder: "1", class: "short-column" %></td>
           <th>拳銃</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :handgun, placeholder: "20", class: "short-column" %></td>
         </tr>
         <tr>
           <th>隠れる</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :hide, placeholder: "10", class: "short-column" %></td>
           <th>ｺﾝﾋﾟｭｰﾀ</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :computer, placeholder: "1", class: "short-column" %></td>
           <th>地質学</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :geology, placeholder: "1", class: "short-column" %></td>
+          <td><%= form.text_field :language_2, placeholder: "ほかの言語", class: "short-person" %></td>
+          <td><%= form.text_field :language_2_value, placeholder: "1", class: "short-column" %></td>
           <th>クトゥルフ神話</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :mythology, placeholder: "0", class: "short-column" %></td>
         </tr>
         <tr>
           <th>忍び歩き</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :stealth, placeholder: "10", class: "short-column" %></td>
           <th>図書館</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :library, placeholder: "25", class: "short-column" %></td>
           <th>博物学</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :natural_history, placeholder: "1", class: "short-column" %></td>
           <th>芸術</th>
           <th></th>
         </tr>
         <tr>
           <th>変装</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :disguise, placeholder: "1", class: "short-column" %></td>
           <th>写真術</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :photography, placeholder: "10", class: "short-column" %></td>
           <th>経理</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :accounting, placeholder: "10", class: "short-column"%></td>
+          <td><%= form.text_field :art, placeholder: "芸術", class: "short-person" %></td>
+          <td><%= form.text_field :art_value, placeholder: "5", class: "short-column" %></td>
         </tr>
         <tr>
           <th>追跡</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :traching, placeholder: "10", class: "short-column" %></td>
           <th>鍵開け</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :picking, placeholder: "1", class: "short-column"%></td>
           <th>法律</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :law, placeholder: "5", class: "short-column"%></td>
           <th>制作</th>
           <td></td>
         </tr>
         <tr>
           <th>ﾅﾋﾞｹﾞｰﾄ</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :navigate, placeholder: "10", class: "short-column" %></td>
           <th>水泳</th>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :swimming, placeholder: "25", class: "short-column" %></td>
           <th>オカルト</th>
-          <td><input type="text" class="short-column"></td>
-          <td><input type="text" class="short-person"></td>
-          <td><input type="text" class="short-column"></td>
+          <td><%= form.text_field :occult, placeholder: "5", class: "short-column" %></td>
+          <td><%= form.text_field :work, placeholder: "制作", class: "short-person" %></td>
+          <td><%= form.text_field :work_value, placeholder: "5", class: "short-column" %></td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="form-btn">
-    <input type="submit" value="保存する" class="save-btn">
+    <%= form.submit "保存する", class:"save-btn" %>
   </div>
-</form>
+<% end %>

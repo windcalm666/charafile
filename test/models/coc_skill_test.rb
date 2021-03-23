@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CthulhuSkillTest < ActiveSupport::TestCase
+class CocSkillTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

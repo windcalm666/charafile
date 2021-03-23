@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_015306) do
+ActiveRecord::Schema.define(version: 2021_03_22_031227) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_015306) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "cthulhu_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "coc_skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "cthulhu_id"
     t.integer "find_hidden"
     t.integer "hearing"
     t.integer "first_aid"
@@ -58,15 +59,16 @@ ActiveRecord::Schema.define(version: 2021_03_22_015306) do
     t.integer "horse_ridding"
     t.integer "heavy_machine"
     t.integer "machine_repair"
-    t.integer "electrical_enginearing"
+    t.integer "electrical_engineering"
     t.integer "computer"
     t.integer "library"
-    t.integer "photograpy"
+    t.integer "photography"
     t.integer "picking"
     t.integer "swimming"
     t.integer "medicine"
     t.integer "chemistry"
     t.integer "pharmacy"
+    t.integer "biology"
     t.integer "physics"
     t.integer "astronomy"
     t.integer "archeology"
@@ -80,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_015306) do
     t.integer "say"
     t.integer "persuade"
     t.integer "credit"
-    t.integer "psyshology"
+    t.integer "psychology"
     t.integer "price_cut"
     t.string "native_language"
     t.integer "native_language_value"
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_03_22_015306) do
     t.integer "mythology"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cthulhu_id"], name: "index_coc_skills_on_cthulhu_id"
   end
 
   create_table "cthulhus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -149,5 +152,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_015306) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "coc_skills", "cthulhus"
   add_foreign_key "cthulhus", "users"
 end

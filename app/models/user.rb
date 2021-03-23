@@ -10,7 +10,7 @@ class User < ApplicationRecord
     validates :password
   end
 
-  has_many :characters
+  has_many :cthulhu
   has_one_attached :image
 
 end
