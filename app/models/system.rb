@@ -7,6 +7,5 @@ class System < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :characters
   
 end
