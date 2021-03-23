@@ -1,22 +1,26 @@
 class CthulhusController < ApplicationController
   def new
-    @cthulhu_skill = CthulhuSkills.new
+    @cthulhu = Cthulhu.new
   end
 
   def create
-     binding.pry
-    @cthulhu_skill = CthulhuSkills.new(cthulhu_params)
-    if @cthulhu_skill.valid?
-      @cthulhu_skill.save
+    @cthulhu = Cthulhu.new(cthulhu_params)
+    if @cthulhu.valid?
+      @cthulhu.save
       redirect_to root_path
     else
       render :new
     end
   end
 
+
+  def show
+    @cthulhu = Cthulhu.find(params[:id])
+  end
+
   private
   def cthulhu_params
-    params.require(:cthulhu_skills).permit(:name, :job, :age, :sex, :str, :con, :dex, :app, :edu, :int, :siz, :pow,
+    params.require(:cthulhu).permit(:name, :job, :age, :sex, :str, :con, :dex, :app, :edu, :int, :siz, :pow,
     :san, :luck, :idea, :knowledge, :magick_points, :damage_bonus, :life_points, :origin, :items, 
     :find_hidden, :hearing, :first_aid, :therapy, :climbing, :leap, :throwing, :avoidance, :conceal, :hide, :stealth,
     :disguise, :traching, :navigate, :driving, :control_1, :control_1_value, :control_2, :control_2_value, :control_3, :control_3_value,

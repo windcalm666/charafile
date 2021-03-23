@@ -24,17 +24,16 @@
     <div class="character-window">
       <h3 class="character-title">既存キャラクター一覧</h3>
       <ul class="character-list">
+        <% @cthulhus.each do |coc| %>
         <li class="list">
-          <a href="#"><img alt="サンプル" class="character-sample-image"></a>
-          <p>キャラ名</p>
+          <%= link_to cthulhu_path(coc.id) do %>
+            <%= image_tag coc.image, class: "character-sample-image" if coc.image.attached? %>
+            <p><%= coc.name %></p>
           <p>クトゥルフ神話TRPG</p>
+          <p><%= coc.created_at %></p>
+          <% end %>
         </li>
-
-        <li class="list">
-          <a href="#"><img alt="サンプル" class="character-sample-image"></a>
-          <p>キャラ名</p>
-          <p>クトゥルフ神話TRPG</p>
-        </li>
+        <% end %>
       </ul>
     </div>
 

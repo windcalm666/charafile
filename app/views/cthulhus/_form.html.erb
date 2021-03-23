@@ -1,6 +1,6 @@
 <%= form_with model: cthulhu, url: cthulhus_path, class: "cthulhu-form", local: true do |form| %>
 
-  <%= render 'layouts/errors', model: cthulhu %>
+  <%= render 'layouts/errors', model: form.object %>
 
   <div class="base-status">
     <table class="cthulhu-status">
@@ -8,8 +8,10 @@
         <th class="form-label">プレイヤー名</th>
         <th colspan="3"><input type="text" value="<%= current_user.nickname %>" readonly class="person"></th>
         <th colspan="2" class="large-label">設定</th>
-        <td class="image-area"rowspan="5"><div  class="image-area">画像</div><br>
-        <%= form.file_field :image %></td>
+        <td class="image-area"rowspan="5"><div  class="image-area"><%= image_tag cthulhu.image.variant(resize: '250x200') if cthulhu.image.attached? %></div><br>
+        <% unless @cthulhu.image.attached? %>
+          <%= form.file_field :image %></td>
+        <% end %>
       </tr>
       <tr>
         <th class="form-label">名前</th>
@@ -254,7 +256,16 @@
       </tbody>
     </table>
   </div>
+  <% if current_user.id == cthulhu.user_id %>
+    <div class="form-btn">
+      <a href="#" class="save-btn">編集する</a>
+      <a href="#" class="save-btn">削除する</a>
+    </div>
+  <% elsif current_user.id != cthulhu.user_id %>
+    <div class="form-btn"></div>
+  <% else %>
   <div class="form-btn">
     <%= form.submit "保存する", class:"save-btn" %>
   </div>
+  <% end %>
 <% end %>
