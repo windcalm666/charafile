@@ -54,7 +54,7 @@
   text-align: center;
 }
 
-.character-list {
+.character-list, .search-result {
   display:flex;
   flex-wrap: wrap;
   overflow: scroll;
@@ -68,13 +68,40 @@
 }
 
 .list p {
+  color: #009bc6;
   text-align: center;
 }
 
 .character-sample-image {
   width: 150px;
   height: 150px;
-  background-color: red;
   display:block;
 }
 
+.user-display {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.result-title {
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  background-color: #98cc65;
+}
+
+.follow-btn a{
+  font-size: 15px;
+  color: #7acbe1;
+  font-weight: bolder;
+}
+
+.result-window {
+  width: 100%;
+  height: 300px;
+  background-color: #ffffff;
+  margin-bottom: 100px;
+}

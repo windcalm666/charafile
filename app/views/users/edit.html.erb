@@ -4,7 +4,7 @@
       <h2>Edit Account</h2>
       <h5>アカウントの編集</h5>
       <%= link_to "ログアウト", "#", class: 'btn'%>
-      <%= link_to "チャットページに戻る", :back, class: 'btn'%>
+      <%= link_to "トップページに戻る", :back, class: 'btn'%>
     </div>
     <div class='account-page__inner--right user-form'>
       <%= form_with model: current_user, local: true do |f|%>
@@ -22,6 +22,14 @@
           </div>
           <div class='field-input'>
             <%= f.email_field :email%>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :image %>
+          </div>
+          <div class='field-input'>
+            <%= f.file_field :image %>
           </div>
         </div>
         <div class='actions'>
