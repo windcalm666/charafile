@@ -1,4 +1,6 @@
 class CthulhusController < ApplicationController
+  before_action :find_cthulhu, only: [:edit, :update, :show, :destroy]
+
   def new
     @cthulhu = Cthulhu.new
   end
@@ -13,9 +15,25 @@ class CthulhusController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @cthulhu.valid?
+      @cthulhu.update(cthulhu_params)
+      redirect_to cthulhu_path(@cthulhu.id)
+    else
+      renader :edit
+    end
+  end
+
 
   def show
-    @cthulhu = Cthulhu.find(params[:id])
+  end
+
+  def destroy
+    @cthulhu.destroy
+    redirect_to root_path
   end
 
   private
@@ -29,6 +47,10 @@ class CthulhusController < ApplicationController
     :accounting, :law, :occult, :say, :persuade, :credit, :psychology, :price_cut, :native_language, :native_language_value,
     :language_1, :language_1_value, :language_2, :language_2_value, :art, :art_value, :work, :work_value, :biology,
     :punch, :kick, :headbutt, :assembled, :martial_arts, :knife, :japanese_sword, :cane, :handgun, :mythology, :image).merge(user_id: current_user.id)
+  end
+
+  def find_cthulhu
+    @cthulhu = Cthulhu.find(params[:id])
   end
 
 end

@@ -1,8 +1,11 @@
 <div class="wrapper">
   <%= render "users/side-bar" %>
 
-  <%= render "form" %>
- 
+  <%= render partial: "form", locals: { cthulhu: @cthulhu } %>
+
+  <style>
+    .hidden-btns{display:none;}
+  </style>
 </div>
 
 <%= render "layouts/footer" %>
