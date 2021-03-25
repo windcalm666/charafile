@@ -1,26 +1,29 @@
 <div class="side-bar">
   <div class="app-title">
-    <h1><a href="/">キャラファイル</a></h1>
+    <h1><%= link_to "キャラファイル", root_path %></h1>
   </div>
   <div class="home">
-    <a href="#">ホーム</a>
+    <%= link_to "ホーム", root_path %>
   </div>
   <div class="follow-user">
-    <a href="#">フォロー</a>
+    <%= link_to "フォロー一覧", follows_user_path(current_user.id) %>
   </div>
   <div class="follower-user">
-    <a href="#">フォロワー</a>
+    <%= link_to "フォロワー一覧", followers_user_path(current_user.id) %>
   </div>
   <div class="user-column">
     <div class="user-image">
-      <h1>アカウント画像</h1>
+      <%= image_tag current_user.image.variant(resize: "70x70") if current_user.image.attached? %>
     </div>
     <div class="user-text">
-      <h1 class="user-name">ゲルマニウム将軍</h1>
-      <h1 class="user-email">sample@email.com</h1>
+      <h1 class="user-name"><%= current_user.nickname %></h1>
+      <h1 class="user-email"><%= current_user.email %></h1>
     </div>
   </div>
+  <div class="edit-user-btn">
+    <%= link_to "アカウント情報編集", edit_user_path(current_user.id) %>
+  </div>
   <div class="log-out">
-    <a href="#">ログアウト</a>
+    <%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
   </div>
 </div>

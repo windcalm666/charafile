@@ -52,9 +52,10 @@
 
 .character-title {
   text-align: center;
+  width: 100%;
 }
 
-.character-list {
+.character-list, .result-list {
   display:flex;
   flex-wrap: wrap;
   overflow: scroll;
@@ -68,13 +69,80 @@
 }
 
 .list p {
+  color: #009bc6;
   text-align: center;
 }
 
 .character-sample-image {
   width: 150px;
   height: 150px;
-  background-color: red;
   display:block;
 }
 
+.user-display {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  margin: 5px 0;
+}
+
+.result-title {
+  color: #ffffff;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  background-color: #98cc65;
+}
+
+.follow-status{
+  font-size: 15px;
+  color: #7acbe1;
+  font-weight: bolder;
+}
+
+.result-window {
+  width: 100%;
+  height: 300px;
+  background-color: #ffffff;
+  margin-bottom: 100px;
+}
+
+.follow-btn a, .show-user-name {
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  margin: 3px auto;
+}
+.follow-btn {
+  text-align: center;
+  background-color: #009bc6;
+}
+
+.user-show-column {
+  width: 180px;
+  border: 3px double #009bc6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.show-user-image {
+  width: 130px;
+  height: 130px;
+  background-color: #ffffff;
+  margin:auto;
+}
+
+.follows {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+}
+
+.following-index a, .follower-index a {
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px;
+  margin: 5px;
+}

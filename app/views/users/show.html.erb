@@ -1,0 +1,46 @@
+<div class="wrapper">
+
+  <%= render "side-bar"%>
+
+  <div class="user-page">
+
+    <%= render "search_form" %>
+
+    <div class="user-show-column">
+      <%= image_tag @user.image.variant(resize: '100x100'), class: "show-user-image" if @user.image.attached?%>
+      <div class="user-texts">
+        <h3 class="show-user-name"><%= @user.nickname %></h3>
+        <% if current_user != @user %>
+          <% if @user.followed_by?(current_user) %>
+            <p class="follow-btn"><%= link_to "フォローしない", user_relationship_path(@user.id, @relationship), method: :delete %></p>
+          <% else %>
+            <p class="follow-btn"><%= link_to "フォローする", user_relationships_path(@user.id), method: :post %></p>
+          <% end %>
+        <% end%>
+      </div>
+    </div>
+
+    <div class="follows">
+      <h3 class="following-index"><%= link_to "フォロー一覧", follows_user_path(@user.id) %>
+      <h3 class="follower-index"><%= link_to "フォロワー一覧", followers_user_path(@user.id) %>
+    </div>
+
+    <div class="character-window">
+      <h3 class="character-title">既存キャラクター一覧</h3>
+      <ul class="character-list">
+        <% @cthulhus.each do |coc| %>
+        <li class="list">
+          <%= link_to cthulhu_path(coc.id) do %>
+            <%= image_tag coc.image, class: "character-sample-image" if coc.image.attached? %>
+            <p><%= coc.name %></p>
+            <p>クトゥルフ神話TRPG</p>
+            <p><%= coc.created_at %></p>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%= render "layouts/footer" %>

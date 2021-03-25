@@ -1,0 +1,21 @@
+<div class="wrapper">
+
+  <%= render "side-bar"%>
+
+  <div class="user-page">
+
+    <%= render "search_form" %>
+
+
+    <div class="result-window">
+      <div class="result-title">
+        <h1>フォロワー一覧</h1> 
+      </div>
+      
+      <%= render partial: "user_list", locals: { users: @users } %>
+
+    </div>
+  </div>
+</div>
+
+<%= render "layouts/footer" %>
