@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   def index
+    @user = User.find(current_user.id)
     @cthulhus = Cthulhu.where(user_id: current_user.id)
   end
 
   def show
     @user = User.find(params[:id])
     @cthulhus = Cthulhu.where(user_id: @user.id)
+    @relationship = Relationship.where(following_id: current_user.id)
     if @user.id == current_user.id
       redirect_to root_path
     end

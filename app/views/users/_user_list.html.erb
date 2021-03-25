@@ -1,0 +1,21 @@
+<ul class="result-list">
+  <% users.each do |user| %>
+    <li class="list">
+      <%= link_to user_path(user.id) do %>
+        <div class="search-user-image">
+          <%= image_tag user.image.variant(resize: "150x150") if user.image.attached? %>
+        </div>
+        <div class="search-user-name">
+          <p><%= user.nickname %></p>
+        </div>
+        <% if current_user != user %>
+          <% if user.followed_by?(current_user) %>
+            <p class="follow-status">フォロー中</p>
+          <% else %>
+            <p class="follow-status">フォロー外</p>
+          <% end %>
+        <% end%>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

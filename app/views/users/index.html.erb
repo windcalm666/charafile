@@ -4,10 +4,7 @@
 
   <div class="user-page">
 
-    <%= form_with url: search_users_path, local: true, method: "get", class: "search-form" do |form| %>
-      <%= form.text_field :keyword, placeholder: "アカウント名でユーザー検索", class: "search-text" %>
-      <%= form.submit "検索", class: "search-btn" %>
-    <% end %>
+    <%= render "search_form" %> 
 
     <div class="new-character">
       <div class="system-pull">

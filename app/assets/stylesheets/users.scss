@@ -52,9 +52,10 @@
 
 .character-title {
   text-align: center;
+  width: 100%;
 }
 
-.character-list, .search-result {
+.character-list, .result-list {
   display:flex;
   flex-wrap: wrap;
   overflow: scroll;
@@ -93,7 +94,7 @@
   background-color: #98cc65;
 }
 
-.follow-btn a{
+.follow-status{
   font-size: 15px;
   color: #7acbe1;
   font-weight: bolder;
@@ -104,4 +105,44 @@
   height: 300px;
   background-color: #ffffff;
   margin-bottom: 100px;
+}
+
+.follow-btn a, .show-user-name {
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  margin: 3px auto;
+}
+.follow-btn {
+  text-align: center;
+  background-color: #009bc6;
+}
+
+.user-show-column {
+  width: 180px;
+  border: 3px double #009bc6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.show-user-image {
+  width: 130px;
+  height: 130px;
+  background-color: #ffffff;
+  margin:auto;
+}
+
+.follows {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+}
+
+.following-index a, .follower-index a {
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px;
+  margin: 5px;
 }

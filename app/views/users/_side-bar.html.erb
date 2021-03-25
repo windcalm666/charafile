@@ -6,10 +6,10 @@
     <%= link_to "ホーム", root_path %>
   </div>
   <div class="follow-user">
-    <a href="#">フォロー</a>
+    <%= link_to "フォロー一覧", follows_user_path(current_user.id) %>
   </div>
   <div class="follower-user">
-    <a href="#">フォロワー</a>
+    <%= link_to "フォロワー一覧", followers_user_path(current_user.id) %>
   </div>
   <div class="user-column">
     <div class="user-image">
