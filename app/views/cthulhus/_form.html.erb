@@ -8,7 +8,7 @@
         <th class="form-label">プレイヤー名</th>
         <th colspan="3"><input type="text" value="<%= current_user.nickname %>" readonly class="person"></th>
         <th colspan="2" class="large-label">設定</th>
-        <td class="image-area"rowspan="5"><div  class="image-area"><%= image_tag cthulhu.image.variant(resize: "250x200") if cthulhu.image.attached? %></div><br>
+        <td class="image-area"rowspan="7"><div  class="image-area"><%= image_tag cthulhu.image.variant(resize: "250x200") if cthulhu.image.attached? %></div><br>
         <% unless @cthulhu.image.attached? %>
           <%= form.file_field :image %></td>
         <% end %>
@@ -16,7 +16,7 @@
       <tr>
         <th class="form-label">名前</th>
         <td colspan="3"><%= form.text_field :name, class: "person" %></td>
-        <td colspan="2" rowspan="4"><%= form.text_area :origin, rows: "10", class: "long-person"%></td>
+        <td colspan="2" rowspan="6"><%= form.text_area :origin, rows: "10", class: "long-person"%></td>
       </tr>
       <tr>
         <th class="form-label">職業</th>
@@ -25,18 +25,26 @@
       <tr>
         <th class="form-label">年齢</th>
         <td><%= form.text_field :age, class: "short-person" %></td>
-        <td rowspan="2"><%= form.text_area :items, rows: "4", placeholder: "所持品", class: "person" %></td>
+        <td rowspan="4"><%= form.text_area :items, rows: "4", placeholder: "所持品", class: "person" %></td>
       </tr>
       <tr>
         <th class="form-label">性別</th>
         <td><%= form.text_field :sex, class: "short-person" %></td>
+      </tr>
+      <tr>
+        <th class="form-label">職業P</th>
+        <td><input type="text" class="short-person" id= "job-points" ></td>
+      </tr>
+      <tr>
+        <th class="form-label">趣味P</th>
+        <td><input type="text" class="short-person" id="hobby-points" ></td>
       </tr>
     </table>
   </div>
   <div class="parameter-status">
     <div class="label-flex">
       <h3>ステータス</h3>
-      <h3>ランダム決定</h3>
+      <input type="button" value="ランダム決定" class="hidden-btn" id="cthulhu-random-btn"></h3>
     </div>
     <table class="cthulhu-status">
       <tr>
@@ -57,21 +65,21 @@
         <th class="short-label">DB</th>
       </tr>
       <tr>
-        <td><%= form.text_field :str, class: "short-column" %></td>
-        <td><%= form.text_field :con, class: "short-column" %></td>
-        <td><%= form.text_field :pow, class: "short-column" %></td>
-        <td><%= form.text_field :dex, class: "short-column" %></td>
-        <td><%= form.text_field :app, class: "short-column" %></td>
-        <td><%= form.text_field :siz, class: "short-column" %></td>
-        <td><%= form.text_field :edu, class: "short-column" %></td>
-        <td><%= form.text_field :int, class: "short-column" %></td>
-        <td><%= form.text_field :idea, class: "short-column" %></td>
-        <td><%= form.text_field :luck, class: "short-column" %></td>
-        <td><%= form.text_field :knowledge, class: "short-column" %></td>
-        <td><%= form.text_field :san, class: "short-column" %></td>
-        <td><%= form.text_field :life_points, class: "short-column" %></td>
-        <td><%= form.text_field :magick_points, class: "short-column" %></td>
-        <td><%= form.text_field :damage_bonus, class: "short-column" %></td>
+        <td><%= form.text_field :str, class: "short-column", id: "str"%></td>
+        <td><%= form.text_field :con, class: "short-column", id: "con" %></td>
+        <td><%= form.text_field :pow, class: "short-column", id: "pow" %></td>
+        <td><%= form.text_field :dex, class: "short-column", id: "dex" %></td>
+        <td><%= form.text_field :app, class: "short-column", id: "app" %></td>
+        <td><%= form.text_field :siz, class: "short-column", id: "siz" %></td>
+        <td><%= form.text_field :edu, class: "short-column", id: "edu" %></td>
+        <td><%= form.text_field :int, class: "short-column", id: "int" %></td>
+        <td><%= form.text_field :idea, class: "short-column", id: "idea" %></td>
+        <td><%= form.text_field :luck, class: "short-column", id: "luck" %></td>
+        <td><%= form.text_field :knowledge, class: "short-column", id: "knowledge" %></td>
+        <td><%= form.text_field :san, class: "short-column", id: "san" %></td>
+        <td><%= form.text_field :life_points, class: "short-column", id: "life-points" %></td>
+        <td><%= form.text_field :magick_points, class: "short-column", id: "magick-points" %></td>
+        <td><%= form.text_field :damage_bonus, class: "short-column", id: "damage-bonus" %></td>
       </tr>
     </table>
   </div>
@@ -173,13 +181,13 @@
           <th>考古学</th>
           <td><%= form.text_field :archeology, placeholder: "1", class: "short-column" %></td>
           <td><%= form.text_field :native_language, placeholder: "母国語", class: "short-person" %></td>
-          <td><%= form.text_field :native_language_value, class: "short-column" %></td>
+          <td><%= form.text_field :native_language_value, class: "short-column", id: "native-language" %></td>
           <th>日本刀</th>
           <td><%= form.text_field :japanese_sword, placeholder: "15", class: "short-column" %></td>
         </tr>
         <tr>
           <th>回避</th>
-          <td><%= form.text_field :avoidance, class: "short-column" %></td>
+          <td><%= form.text_field :avoidance, class: "short-column", id: "avoidance" %></td>
           <th>機械修理</th>
           <td><%= form.text_field :machine_repair, placeholder: "20", class: "short-column" %></td>
           <th>歴史</th>
