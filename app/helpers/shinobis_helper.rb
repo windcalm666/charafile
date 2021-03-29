@@ -1,0 +1,2 @@
+module ShinobisHelper
+end
