@@ -1,0 +1,2 @@
+class SinobisController < ApplicationController
+end

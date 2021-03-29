@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end
   resources :cthulhus
+  resources :shinobis
 end

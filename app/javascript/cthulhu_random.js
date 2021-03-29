@@ -8,14 +8,6 @@ const diceRoll3D6 = (attr, trigger) => {
   return attr.value = putsResult;
 };
 
-const diceRoll3D63 = (attr) => {
-  const resultNums = [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21];
-  const diceResult = Math.floor(Math.random() * 16);
-  const putsResult = resultNums[diceResult];
-  return attr.value = putsResult;
-
-}
-
 const diceRoll2D66 = (attr) => {
   const resultNums = [8,9,10,11,12,13,14,15,16,17,18];
   const diceResult = Math.floor(Math.random() * 11)
@@ -67,11 +59,6 @@ const damageCalc = (str, siz, db) => {
   };
 };
 
-const twiceStatus = (num, attr) => {
-  const calcResult = (num) * 2;
-  return attr.value = calcResult;
-};
-
 const randomStatus = () => {
   const randomButton = document.getElementById("cthulhu-random-btn");
   randomButton.addEventListener("click", () => {
@@ -111,19 +98,12 @@ const randomStatus = () => {
     statusCalc(edu.value, jobPoints, "twenty");
     statusCalc(int.value, hobbyPoints, "ten");
 
-
     const lifePoints = document.getElementById("life-points");
     lifeCalc(con.value, siz.value, lifePoints);
 
     const damageBonus = document.getElementById("damage-bonus");
     damageCalc(str.value, siz.value, damageBonus);
-
-
-
-
-
-
   });
 };
 
-window.addEventListener("load", randomStatus)
+window.addEventListener("load", randomStatus);

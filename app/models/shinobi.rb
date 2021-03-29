@@ -1,0 +1,2 @@
+class Shinobi < ApplicationRecord
+end
