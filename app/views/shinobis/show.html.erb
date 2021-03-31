@@ -1,0 +1,24 @@
+<div class="wrapper">
+
+  <%= render "users/side-bar" %>
+
+  <div class="main-page">
+    <%= render partial: "form", locals: { shinobi: @shinobi } %>
+
+    <% if current_user.id == @shinobi.user_id %>
+      <div class="form-btn hidden-btns">
+        <%= link_to "編集する", edit_shinobi_path(@shinobi.id), class: "save-btn" %>
+        <%= link_to "削除する", shinobi_path(@shinobi.id), method: "DELETE", class: "save-btn" %>
+      </div>
+    <% end %>
+      
+      <style>
+        .secret-form, .hidden-btn{display:none;}
+        td{pointer-events:none;}
+      </style>
+
+  </div>
+</div>
+
+<%= render "layouts/footer" %>
+

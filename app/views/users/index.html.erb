@@ -11,7 +11,7 @@
         <select class="system-select">
           <option value="">システム選択</option>
           <option value="cthulhu">クトゥルフ神話TRPG</option>
-          <option value="SW2.5">ソードワールド2.5</option>
+          <option value="SW2.5">ソードワールド2.5(未実装)</option>
           <option value="shinobigami">シノビガミ</option>
         </select>
       </div>
@@ -22,14 +22,24 @@
       <h3 class="character-title">既存キャラクター一覧</h3>
       <ul class="character-list">
         <% @cthulhus.each do |coc| %>
-        <li class="list">
-          <%= link_to cthulhu_path(coc.id) do %>
-            <%= image_tag coc.image, class: "character-sample-image" if coc.image.attached? %>
-            <p><%= coc.name %></p>
-          <p>クトゥルフ神話TRPG</p>
-          <p><%= coc.created_at %></p>
-          <% end %>
-        </li>
+          <li class="list">
+            <%= link_to cthulhu_path(coc.id) do %>
+              <%= image_tag coc.image, class: "character-sample-image" if coc.image.attached? %>
+              <p><%= coc.name %></p>
+              <p>クトゥルフ神話TRPG</p>
+              <p><%= coc.created_at %></p>
+            <% end %>
+          </li>
+        <% end %>
+        <% @shinobis.each do |ninja| %>
+          <li class="list">
+            <%= link_to shinobi_path(ninja.id) do %>
+              <%= image_tag ninja.image, class: "character-sample-image" if ninja.image.attached? %>
+              <p><%= ninja.name %></p>
+              <p>シノビガミ</p>
+              <p><%= ninja.created_at %></p>
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>

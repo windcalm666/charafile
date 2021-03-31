@@ -1,20 +1,555 @@
-<form class="shinobi-form">
+<%= form_with model: shinobi, class: "shinobi-form", local: true do |form|%>
 
-  <div class="shinobi-paesonal-form">
-    
+  <%= render 'layouts/errors', model: form.object %>
+
+  <div class="shinobi-personal-form">
+    <table class="shinobi-personal-table">
+      <thead>
+        <th colspan="8"><h3 class="shinobi-table-title">基本情報</h3></th>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="shinobi-short-label">プレイヤー名</th>
+          <% if  shinobi.id == nil || shinobi.user.id == current_user.id %>
+            <th colspan="3"><input type="text" value="<%= current_user.nickname %>" readonly class="person"></th>
+          <% else %>
+            <th colspan="3"><input type="text" value="<%= shinobi.user.nickname %>" readonly class="person"></th>
+          <% end %>
+          <th colspan="4" class="shinobi-large-label">設定</th>
+        </tr>
+        <tr>
+          <th class="shinobi-short-label">名前</th>
+          <td colspan="3"><%= form.text_field :name, class: "shinobi-large-person" %></td>
+          <td colspan="2" rowspan="7"><%= form.text_area :origin, placeholder: "キャラクター設定", rows: "11", cols: "30" %>
+          <td colspan="2" rowspan="7" class="shinobi-image-column"><div class="image-area"><%= image_tag shinobi.image.variant(resize: "250x200") if shinobi.image.attached? %></div></td>
+        </tr>
+        <tr>
+          <th class="shinobi-short-label">上位流派</th>
+          <td>
+              <%= form.collection_select( :school_id ,ShinobiSchool.all, :id, :name, {}, {id: "shinobi-scholl-select"}) %>
+          </td>
+          <th class="shinobi-short-label">流派</th>
+          <td><%= form.text_field :under_school, class: "shinobi-short-person" %></td>
+        </tr>
+        <tr>
+          <th class="shinobi-short-label">流儀</th>
+          <td colspan="3"><%= form.text_field :school_style, class: "shinobi-large-person" %></td>
+        </tr>
+        <tr>
+          <th class="shinobi-short-label">仇敵</th>
+          <td colspan="3"><%= form.text_field :enemy, class: "shinobi-large-person" %></td>
+        </tr>
+        <tr>
+          <th class="shinobi-short-label">階級</th>
+          <td><%= form.text_field :shinobi_class, class:"shinobi-short-person" %></td>
+          <th class="shinobi-short-label">功績</th>
+          <td><%= form.text_field :achivement , class: "shinobi-short-person" %></td>
+        </tr>
+        <tr>
+          <th class="shinobi-short-label">年齢</th>
+          <td><%= form.text_field :age, class: "shinobi-short-person" %></td>
+          <th class="shinobi-short-label">性別</th>
+          <td><%= form.text_field :sex, class: "shinobi-short-person" %></td>
+        </tr>
+        <tr>
+          <th class="shinobi-short-label">表の顔</th>
+          <td><%= form.text_field :job, class: "shinobi-short-person" %></td>
+          <th class="shinobi-short-label">信念</th>
+          <td><%= form.text_field :belief, class: "shinobi-short-person" %></td>
+        </tr>
+        <tr>
+          <th colspan="4"></th>
+          <th>秘密閲覧</th>
+          <th><input type="button" value="閲覧中"></th>
+          <td>
+            <label class="hidden-btn">
+              <% unless shinobi.image.attached? %>
+                <span class="file-select-button">立ち絵</span>
+                <%= form.file_field :image, class: "hidden" %>
+              <% end %>
+            </label>
+          </td>
+          <th><input type="reset" value="全てリセット" class="hidden-btn"></th>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="shinobi-skill-form">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="19"><h3 class="shinobi-table-title">特技リスト</h3></th>
+        </tr>
+        <tr class="back-fill">
+          <th rowspan="2"></th>
+          <td><%= form.check_box :skill_space_0, id:"blank-0" %></td>
+          <th rowspan="2">器術</th>
+          <td rowspan="2"><input type="checkbox"></td>
+          <td><%= form.check_box :skill_space_1, id: "blank-A" %></td>
+          <th rowspan="2">体術</th>
+          <td rowspan="2"><input type="checkbox"></td>
+          <td><%= form.check_box :skill_space_2, id: "blank-B" %></td>
+          <th rowspan="2">忍術</th>
+          <td rowspan="2"><input type="checkbox"></td>
+          <td><%= form.check_box :skill_space_3, id: "blank-C" %></td>
+          <th rowspan="2">謀術</th>
+          <td rowspan="2"><input type="checkbox"></td>
+          <td><%= form.check_box :skill_space_4, id: "blank-D" %></td>
+          <th rowspan="2">戦術</th>
+          <td rowspan="2"><input type="checkbox"></td>
+          <td><%= form.check_box :skill_space_5, id: "blank-E" %></td>
+          <th rowspan="2">妖術</th>
+          <td rowspan="2"><input type="checkbox"></td>
+        </tr>
+        <tr class="back-fill">
+          <th></th>
+          <th>A</th>
+          <th>B</th>
+          <th>C</th>
+          <th>D</th>
+          <th>E</th>
+        </tr>
+      </thead>
+      <tbody class="shinobi-skill-body">
+        <tr>
+          <td class="back-fill">2</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">絡繰術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">騎乗術</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">生存術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">医術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">兵糧術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">異形化</th>
+        </tr>
+        <tr>
+          <td class="back-fill">3</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2"class="skill-column">火術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">砲術</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">潜伏術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">毒術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">鳥獣術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">召喚術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">4</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">水術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">手裏剣術</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">遁走術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">罠術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">野戦術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">死霊術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">5</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">針術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">手練</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">盗聴術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">調査術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">地の利</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">結界術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">6</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">仕込み</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">身体操術</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">腹話術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">詐術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">意気</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">封術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">7</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">衣装術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">歩法</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">隠形術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">対人術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">用兵術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">言霊術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">8</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">縄術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">走法</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">変装術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">遊芸</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">記憶術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">幻術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">9</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">登術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">飛術</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">香術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">九ノ一術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">見敵術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">瞳術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">10</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">拷問術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">骨法術</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">分身の術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">傀儡の術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">暗号術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">千里眼の術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">11</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">壊器術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">刀術</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">隠蔽術</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">流言の術</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">伝達術</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">憑依術</th>
+        </tr>
+        <tr>
+          <td class="back-fill">12</td>
+          <th class="blank-spaece-0"></th>
+          <th colspan="2" class="skill-column">掘削術</th>
+          <th class="blank-spaece-A"></th>
+          <th colspan="2" class="skill-column">怪力</th>
+          <th class="blank-spaece-B"></th>
+          <th colspan="2" class="skill-column">第六感</th>
+          <th class="blank-spaece-C"></th>
+          <th colspan="2" class="skill-column">経済力</th>
+          <th class="blank-spaece-D"></th>
+          <th colspan="2" class="skill-column">人脈</th>
+          <th class="blank-spaece-E"></th>
+          <th colspan="2" class="skill-column">呪術</th>
+        </tr>
+        <tr>
+          <th colspan="19"><%= form.check_box :skill_space_bottom, id: "blank-bottom" %></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="master-skill-form">
+      <h3 class="master-skill-title">習得技能</h3>
+      <div class="master-skill-1">
+        <%= form.text_field :skill_1, class: "skill-learn hidden" %>
+      </div>
+      <div class="master-skill-2">
+        <%= form.text_field :skill_2, class: "skill-learn hidden" %>
+      </div>
+      <div class="master-skill-3">
+        <%= form.text_field :skill_3, class: "skill-learn hidden" %>
+      </div>
+      <div class="master-skill-4">
+        <%= form.text_field :skill_4, class: "skill-learn hidden" %>
+      </div>
+      <div class="master-skill-5">
+        <%= form.text_field :skill_5, class: "skill-learn hidden" %>
+      </div>
+      <div class="master-skill-6">
+        <%= form.text_field :skill_6, class: "skill-learn hidden" %>
+      </div>
+      <div class="master-skill-7">
+        <%= form.text_field :skill_7, class: "skill-learn hidden" %>
+      </div>
+      <div class="master-skill-8">
+        <%= form.text_field :skill_8, class: "skill-learn hidden" %>
+      </div>
+      <input type="button" value="最下行を削除" class="hidden-btn">
+    </div>
   </div>
 
   <div class="shinobi-arts-form">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="8"><h3 class="shinobi-table-title">忍法</h3></th>
+        </tr>
+        <tr>
+          <th>秘</th>
+          <th>忍法名</th>
+          <th>タイプ</th>
+          <th>指定特技</th>
+          <th>間合い</th>
+          <th>コスト</th>
+          <th>効果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><%= form.check_box :arts_secret_1, id: "secret-arts-1" %></th>
+          <td><%= form.text_field :arts_name_1, value: "接近戦攻撃", class: "arts-name" %></td>
+          <td>
+            <%= form.collection_select( :arts_type_1, Type.all, :id, :name, {}, {}) %>
+          </td>
+          <td><%= form.text_field :arts_skill_1, placeholder: "自由", class: "arts-skill" %></td>
+          <td><%= form.text_field :arts_range_1, value: "1", class: "arts-short" %></td>
+          <td><%= form.text_field :arts_cost_1, value: "なし", class: "arts-short" %></td>
+          <td><%= form.text_area :arts_effect_1, cols: "30", value: "接近戦1点ダメージを与える。", id: "arts-effect-1", class: "arts-effect" %></td>
+        </tr>
+        <tr class="hidden">
+          <th><input type="checkbox" id="secret-arts-2"></th>
+          <td><input type="text" class="arts-name"></td>
+          <td>
+            <select>
+              <option>攻撃</option>
+              <option>サポート</option>
+              <option>装備</option>
+            </select>
+          </td>
+          <td><input type="text" class="arts-skill"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><textarea cols="30" id="arts-effect-2" class="arts-effect"></textarea></td>
+        </tr>
+        <tr class="hidden">
+          <th><input type="checkbox" id="secret-arts-3"></th>
+          <td><input type="text" class="arts-name"></td>
+          <td>
+            <select>
+              <option>攻撃</option>
+              <option>サポート</option>
+              <option>装備</option>
+            </select>
+          </td>
+          <td><input type="text" class="arts-skill"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><textarea cols="30" id="arts-effect-3" class="arts-effect"></textarea></td>
+        </tr>
+        <tr class="hidden">
+          <th><input type="checkbox" id="secret-arts-4"></th>
+          <td><input type="text" class="arts-name"></td>
+          <td>
+            <select>
+              <option>攻撃</option>
+              <option>サポート</option>
+              <option>装備</option>
+            </select>
+          </td>
+          <td><input type="text" class="arts-skill"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><textarea cols="30" id="arts-effect-4" class="arts-effect"></textarea></td>
+        </tr>
+        <tr class="hidden">
+          <th><input type="checkbox" id="secret-arts-5"></th>
+          <td><input type="text" class="arts-name"></td>
+          <td>
+            <select>
+              <option>攻撃</option>
+              <option>サポート</option>
+              <option>装備</option>
+            </select>
+          </td>
+          <td><input type="text" class="arts-skill"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><textarea cols="30" id="arts-effect-5" class="arts-effect"></textarea></td>
+        </tr>
+        <tr class="hidden">
+          <th><input type="checkbox" id="secret-arts-6"></th>
+          <td><input type="text" class="arts-name"></td>
+          <td>
+            <select>
+              <option>攻撃</option>
+              <option>サポート</option>
+              <option>装備</option>
+            </select>
+          </td>
+          <td><input type="text" class="arts-skill"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><textarea cols="30" id="arts-effect-6" class="arts-effect"></textarea></td>
+        </tr>
+        <tr class="hidden">
+          <th><input type="checkbox" id="secret-arts-7"></th>
+          <td><input type="text" class="arts-name"></td>
+          <td>
+            <select>
+              <option>攻撃</option>
+              <option>サポート</option>
+              <option>装備</option>
+            </select>
+          </td>
+          <td><input type="text" class="arts-skill"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><textarea cols="30" id="arts-effect-7" class="arts-effect"></textarea></td>
+        </tr>
+        <tr class="hidden">
+          <th><input type="checkbox" id="secret-arts-8"></th>
+          <td><input type="text" class="arts-name"></td>
+          <td>
+            <select>
+              <option>攻撃</option>
+              <option>サポート</option>
+              <option>装備</option>
+            </select>
+          </td>
+          <td><input type="text" class="arts-skill"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><input type="text" class="arts-short"></td>
+          <td><textarea cols="30" id="arts-effect-8" class="arts-effect"></textarea></td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="button" value="行を追加(最大8個)" class="hidden-btn" id="add-arts-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn">
   </div>
 
   <div class="shinobi-background-form">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="5"><h3 class="shinobi-table-title">背景</h3></th>
+        </tr>
+        <tr>
+          <th>名称</th>
+          <th>種別</th>
+          <th>功績点</th>
+          <th>効果</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= form.text_field :background_1 %></td>
+        <td>
+          <%= form.collection_select(:background_features_1, Features.all, :id, :name, {}, {}) %>
+        </td>
+        <td><%= form.text_field :background_point_1, class: "background-short" %></td>
+        <td><%= form.text_area :background_effect_1, class: "background-effect" %></td>
+      </tr>
+      </tbody>
+    </table>
+    <input type="button" value="行を追加(最大10個)" class="hidden-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn">
   </div>
 
-  <div class="shinobi-items-form">
+  <div class="shinobi-mystery-form secret-form">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="4"><h3 class="shinobi-table-title">奥義</th>
+        </tr>
+        <tr>
+          <th>奥義名</th>
+          <th>指定特技</th>
+          <th>効果/強み/弱み</th>
+          <th>演出</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= form.text_area :mystery_name_1, class: "mystery-name" %></td>
+          <td><%= form.text_area :mystery_skill_1, class: "mystery-skill" %></td>
+          <td><%= form.text_area :mystery_effect_1, class: "mystery-effect" %></td>
+          <td><%= form.text_area :mystery_directing_1, class: "mystery-directing" %></td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="button" value="行を追加(最大2個)" class="hidden-btn" id="add-mystery-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn">
   </div>
 
+  <div class="shinobi-items-form secret-form">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"><h3 class="shinobi-table-title">忍具</h3></th>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <th>個数</th>
+          <th>効果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= form.text_field :item_name_1, value: "兵糧丸", class: "item-name" %></td>
+          <td><%= form.text_field :item_number_1, class: "item-number" %></td>
+          <td><%= form.text_field :item_effect_1, value: "いつでも使用できる。このアイテムを使用すると自分の【生命力】１点か変調１つを回復することができる。", class: "item-effect" %>
+        </tr>
+        <tr>
+          <td><%= form.text_field :item_name_2, value: "神通丸", class: "item-name" %></td>
+          <td><%= form.text_field :item_number_2, class: "item-number" %></td>
+          <td><%= form.text_field :item_effect_2, value: "自分が行為判定のサイコロを振ったときに使用できる。そのサイコロを振り直すことができる。", class: "item-effect" %>
+        </tr>
+        <tr>
+          <td><%= form.text_field :item_name_3, value: "遁甲符", class: "item-name" %></td>
+          <td><%= form.text_field :item_number_3, class: "item-number" %></td>
+          <td><%= form.text_field :item_effect_3, value: "自分以外の誰かが行為判定のサイコロを振ったときに使用できる。そのサイコロを振り直すことができる。", class: "item-effect" %>
+        </tr>
+        <tr class="hidden">
+          <td><%= form.text_field :item_name_4, class: "item-name" %></td>
+          <td><%= form.text_field :item_number_4, class: "item-number" %></td>
+          <td><%= form.text_field :item_effect_4, class: "item-effect" %></td>
+        <tr>
+        <tr class="hidden">
+          <td><%= form.text_field :item_name_5, class: "item-name" %></td>
+          <td><%= form.text_field :item_number_5, class: "item-number" %></td>
+          <td><%= form.text_field :item_effect_5, class: "item-effect" %></td>
+        <tr>
+      </tbody>
+    </table>
+    <input type="button" value="行を追加(最大5個)" class="hidden-btn" id="add-item-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn">
+  </div>
 
-</form>
+  <div class="form-btn hidden-btn">
+    <%= form.submit "保存する", class:"save-btn hidden-btn" %>
+  </div>
+<% end %>

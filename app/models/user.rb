@@ -10,7 +10,8 @@ class User < ApplicationRecord
     validates :password
   end
 
-  has_many :cthulhu
+  has_many :cthulhus
+  has_many :shinobis
   has_one_attached :image
 
    # ====================自分がフォローしているユーザーとの関連 ===================================

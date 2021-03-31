@@ -6,16 +6,20 @@
     <table class="cthulhu-status">
       <tr>
         <th class="form-label">プレイヤー名</th>
-          <% if cthulhu.user.id == current_user.id || cthulhu.user.id == "" %>
-            <th colspan="3"><input type="text" value="<%= current_user.nickname %>" readonly class="person"></th>
-          <% else %>
-            <th colspan="3"><input type="text" value="<%= cthulhu.user.nickname %>" readonly class="person"></th>
-          <% end %>
+        <% if cthulhu.id == nil || cthulhu.user.id == current_user.id %>
+          <th colspan="3"><input type="text" value="<%= current_user.nickname %>" readonly class="person"></th>
+        <% else %>
+          <th colspan="3"><input type="text" value="<%= cthulhu.user.nickname %>" readonly class="person"></th>
+        <% end %>
         <th colspan="2" class="large-label">設定</th>
         <td class="image-area"rowspan="7"><div  class="image-area"><%= image_tag cthulhu.image.variant(resize: "250x200") if cthulhu.image.attached? %></div><br>
-        <% unless @cthulhu.image.attached? %>
-          <%= form.file_field :image %></td>
-        <% end %>
+         <label>
+            <% unless @cthulhu.image.attached? %>
+              <span class="file-select-button">立ち絵</span>
+              <%= form.file_field :image, class: "hidden" %>
+            <% end %>
+          </label>
+        </td>
       </tr>
       <tr>
         <th class="form-label">名前</th>
