@@ -1,0 +1,125 @@
+
+.shinobi-form {
+  width:100%;
+}
+
+.shinobi-table-title {
+  width: 100%;
+  font-size: 20px;
+  text-align: start;
+}
+
+.shinobi-form tr, .shinobi-form th, .shinobi-form td {
+  color: #ffffff;
+  border: 1px solid #98cc65;
+  text-align: center;
+  background-color: #009bc6;
+  padding: 1px;
+}
+
+.shinobi-short-label {
+  width: 64px;
+  font-size: 13px;
+  color: #ffffff;
+  padding: 2px;
+  text-align: center;
+}
+
+.shinobi-large-person {
+  width: 100%;
+}
+
+.shinobi-short-person {
+  width: 8em;
+  text-align: center;
+}
+
+.shinobi-image-column {
+  width: 200px;
+  height: 250px;
+}
+
+.shinobi-image-button {
+  padding: 5px;
+  color: black;
+  background-color: #e6e6e6;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+.shinobi-skill-form {
+  display: flex;
+}
+
+.shinobi-skill-body tr, .shinobi-skill-body th {
+  background-color: #ffffff;
+  color: black;
+}
+
+.skill-column, .skill-learn {
+  width: 6em;
+  padding: 2px;
+}
+
+.back-fill {
+  background-color: #009bc6;
+  color: #ffffff;
+}
+
+.master-skill-form {
+  margin: 0 0 0 10px;
+}
+
+.master-skill-title {
+  padding:3px;
+  width: 100%;
+  border:1px solid #009bc6;
+}
+
+.shinobi-personal-form,
+.shinobi-skill-form,
+.shinobi-arts-form,
+.shinobi-background-form,
+.shinobi-mystery-form,
+.shinobi-items-form {
+  margin-bottom: 10px;
+}
+
+.shinobi-arts-form,
+.shinobi-background-form,
+.shinobi-mystery-form,
+.shinobi-items-form {
+  font-size: 13px;
+  width:100%;
+}
+
+.arts-skill, .mystery-skill {
+  width: 6em;
+}
+
+.arts-effect {
+  width:35em;
+  height: 30px;
+}
+
+.arts-short, .background-short, .item-number {
+  width: 3em;
+  text-align: center;
+}
+
+.background-effect {
+  width: 25em;
+  height: 30px;
+}
+
+.mystery-directing {
+  width: 30em;
+}
+
+.item-name {
+  width: 5em;
+}
+
+.item-effect {
+  width: 45em;
+}

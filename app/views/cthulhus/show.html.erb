@@ -1,12 +1,23 @@
 <div class="wrapper">
   <%= render "users/side-bar" %>
 
-  <%= render partial: "form", locals: { cthulhu: @cthulhu } %>
+  <div class="main-page">
+    <%= render partial: "form", locals: { cthulhu: @cthulhu } %>
 
-  <style>
-    .hidden-btn{display:none;}
-    td{pointer-events:none;}
-  </style>
+    
+      <% if current_user.id == @cthulhu.user_id %>
+        <div class="form-btn hidden-btns">
+          <%= link_to "編集する", edit_cthulhu_path(@cthulhu.id), class: "save-btn" %>
+          <%= link_to "削除する", cthulhu_path(@cthulhu.id), method: "DELETE", class: "save-btn" %>
+        </div>
+      <% end %>
+
+    <style>
+      .hidden-btn{display:none;}
+      td{pointer-events:none;}
+    </style>
+    
+  </div>
 </div>
 
 

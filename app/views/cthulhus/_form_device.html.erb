@@ -59,7 +59,7 @@
         <td>
           <label>
             <% unless @cthulhu.image.attached? %>
-              <span class="cthulhu-image-btn">立ち絵</span>
+              <span class="file-select-button">立ち絵</span>
               <%= form.file_field :image, class: "hidden" %>
             <% end %>
           </label>

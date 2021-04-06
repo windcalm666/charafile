@@ -4,10 +4,17 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("../cthulhu_random")
+require("../change_link")
+require("../shinobi-blank-fill")
+require("../learn_skill")
+require("../click_event_btns")
+require("../arts_form")
+require("../background_form")
+require("../mystery_form")
+require("../item_form")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

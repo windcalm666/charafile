@@ -11,14 +11,18 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :job
       t.string :belief
       t.text :origin
-      t.string :class
+      t.string :shinobi_class
       t.string :enemy
+      t.integer :achievement
 
-      t.boolean :skill_spaece_1
-      t.boolean :skill_spaece_2
-      t.boolean :skill_spaece_3
-      t.boolean :skill_spaece_4
-      t.boolean :skill_spaece_5
+      t.boolean :skill_space_0
+      t.boolean :skill_space_1
+      t.boolean :skill_space_2
+      t.boolean :skill_space_3
+      t.boolean :skill_space_4
+      t.boolean :skill_space_5
+      t.boolean :skill_space_bottom
+
       t.string :skill_1
       t.string :skill_2
       t.string :skill_3
@@ -26,9 +30,14 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :skill_5
       t.string :skill_6
       t.string :skill_7
-      t.string :skill_8
 
-
+      t.boolean :arts_secret_1
+      t.boolean :arts_secret_2
+      t.boolean :arts_secret_3
+      t.boolean :arts_secret_4
+      t.boolean :arts_secret_5
+      t.boolean :arts_secret_6
+      t.boolean :arts_secret_7
       t.string :arts_name_1
       t.string :arts_name_2
       t.string :arts_name_3
@@ -36,8 +45,6 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :arts_name_5
       t.string :arts_name_6
       t.string :arts_name_7
-      t.string :arts_name_8
-
       t.integer :arts_type_1
       t.integer :arts_type_2
       t.integer :arts_type_3
@@ -45,8 +52,6 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.integer :arts_type_5
       t.integer :arts_type_6
       t.integer :arts_type_7
-      t.integer :arts_type_8
-
       t.string :arts_skill_1
       t.string :arts_skill_2
       t.string :arts_skill_3
@@ -54,8 +59,6 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :arts_skill_5
       t.string :arts_skill_6
       t.string :arts_skill_7
-      t.string :arts_skill_8
-
       t.string :arts_range_1
       t.string :arts_range_2
       t.string :arts_range_3
@@ -63,8 +66,6 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :arts_range_5
       t.string :arts_range_6
       t.string :arts_range_7
-      t.string :arts_range_8
-
       t.string :arts_cost_1
       t.string :arts_cost_2
       t.string :arts_cost_3
@@ -72,8 +73,6 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :arts_cost_5
       t.string :arts_cost_6
       t.string :arts_cost_7
-      t.string :arts_cost_8
-
       t.text :arts_effect_1
       t.text :arts_effect_2
       t.text :arts_effect_3
@@ -81,8 +80,6 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.text :arts_effect_5
       t.text :arts_effect_6
       t.text :arts_effect_7
-      t.text :arts_effect_8
-
 
       t.string :background_1
       t.string :background_2
@@ -94,16 +91,26 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :background_8
       t.string :background_9
       t.string :background_10
-      t.integer :backgronud_point_1
-      t.integer :backgronud_point_2
-      t.integer :backgronud_point_3
-      t.integer :backgronud_point_4
-      t.integer :backgronud_point_5
-      t.integer :backgronud_point_6
-      t.integer :backgronud_point_7
-      t.integer :backgronud_point_8
-      t.integer :backgronud_point_9
-      t.integer :backgronud_point_10
+      t.integer :background_features_1
+      t.integer :background_features_2
+      t.integer :background_features_3
+      t.integer :background_features_4
+      t.integer :background_features_5
+      t.integer :background_features_6
+      t.integer :background_features_7
+      t.integer :background_features_8
+      t.integer :background_features_9
+      t.integer :background_features_10
+      t.string :backgronud_point_1
+      t.string :backgronud_point_2
+      t.string :backgronud_point_3
+      t.string :backgronud_point_4
+      t.string :backgronud_point_5
+      t.string :backgronud_point_6
+      t.string :backgronud_point_7
+      t.string :backgronud_point_8
+      t.string :backgronud_point_9
+      t.string :backgronud_point_10
       t.text :background_effect_1
       t.text :background_effect_2
       t.text :background_effect_3
@@ -117,20 +124,12 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
 
       t.string :mystery_name_1
       t.string :mystery_name_2
-      t.string :mystery_name_3
-
       t.string :mystery_skill_1
       t.string :mystery_skill_2
-      t.string :mystery_skill_3
-
       t.string :mystery_effect_1
       t.string :mystery_effect_2
-      t.string :mystery_effect_3
-
       t.string :mystery_directing_1
       t.string :mystery_directing_2
-      t.string :mystery_directing_3
-
 
       t.string :item_name_1
       t.string :item_name_2
@@ -142,11 +141,11 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.integer :item_number_3
       t.integer :item_number_4
       t.integer :item_number_5
-      t.text :item_effest_1
-      t.text :item_effest_2
-      t.text :item_effest_3
-      t.text :item_effest_4
-      t.text :item_effest_5
+      t.text :item_effect_1
+      t.text :item_effect_2
+      t.text :item_effect_3
+      t.text :item_effect_4
+      t.text :item_effect_5
 
       t.timestamps
     end

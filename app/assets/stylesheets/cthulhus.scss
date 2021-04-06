@@ -1,5 +1,5 @@
 .cthulhu-form {
-  width: 70%;
+  width: 100%;
   margin: 30px 0;
 }
 
@@ -15,6 +15,10 @@
   width: 100%;
   background-color: #009bc6;
   padding:3px;
+}
+
+.coc-table-title {
+  width:100%;
 }
 
 .large-label {
@@ -78,4 +82,16 @@ h3 {
   background-color: #98cc65;
   padding:5px;
   border: 1px solid #999999;
+}
+
+.file-select-button {
+  padding: 5px;
+  color: black;
+  background-color: #e6e6e6;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+.hidden {
+  display: none;
 }

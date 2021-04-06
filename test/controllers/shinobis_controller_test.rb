@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SinobisControllerTest < ActionDispatch::IntegrationTest
+class ShinobisControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
