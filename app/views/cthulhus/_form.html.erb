@@ -91,7 +91,7 @@
       </tr>
     </table>
   </div>
-  <h3>技能一覧</h3>
+  <h3 class="coc-table-title">技能一覧</h3>
   <div class="skill-status">
     <table>
       <thead>
@@ -273,12 +273,6 @@
     </table>
   </div>
   <div class="form-btn hidden-btn">
-    <%= form.submit "保存する", class:"save-btn hidden-btn" %>
+    <%= form.submit "保存する", class:"save-btn" %>
   </div>
-  <% if current_user.id == @cthulhu.user_id %>
-      <div class="form-btn hidden-btns">
-        <%= link_to "編集する", edit_cthulhu_path(@cthulhu.id), class: "save-btn" %>
-        <%= link_to "削除する", cthulhu_path(@cthulhu.id), method: "DELETE", class: "save-btn" %>
-      </div>
-    <% end %>
 <% end %>

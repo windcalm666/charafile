@@ -1,4 +1,4 @@
-<%= form_with model: shinobi, class: "shinobi-form", local: true do |form|%>
+<%= form_with model: shinobi, class: "shinobi-form", id:"shinobi-form", name:"shinobiForm", local: true do |form|%>
 
   <%= render 'layouts/errors', model: form.object %>
 
@@ -26,7 +26,7 @@
         <tr>
           <th class="shinobi-short-label">上位流派</th>
           <td>
-              <%= form.collection_select( :school_id ,ShinobiSchool.all, :id, :name, {}, {id: "shinobi-scholl-select"}) %>
+              <%= form.collection_select( :school_id ,ShinobiSchool.all, :id, :name, {}, {id: "shinobi-school-select"}) %>
           </td>
           <th class="shinobi-short-label">流派</th>
           <td><%= form.text_field :under_school, class: "shinobi-short-person" %></td>
@@ -60,16 +60,22 @@
         <tr>
           <th colspan="4"></th>
           <th>秘密閲覧</th>
-          <th><input type="button" value="閲覧中"></th>
+          <% if params[:action] == "new" %>
+            <th id="create-status">作成中</th>
+          <% elsif params[:action]  == "edit" %>
+            <th id="create-status">編集中</th>
+          <% else %>
+            <th><input type="button" value="秘匿中" id="secret-change-btn"></th>
+          <% end %>
           <td>
             <label class="hidden-btn">
-              <% unless shinobi.image.attached? %>
+              <% unless params[:action] == "show" %>
                 <span class="file-select-button">立ち絵</span>
                 <%= form.file_field :image, class: "hidden" %>
               <% end %>
             </label>
           </td>
-          <th><input type="reset" value="全てリセット" class="hidden-btn"></th>
+          <th><input type="reset" value="全てリセット" class="hidden-btn" id="reset-btn"></th>
         </tr>
       </tbody>
     </table>
@@ -111,204 +117,184 @@
           <th>E</th>
         </tr>
       </thead>
-      <tbody class="shinobi-skill-body">
-        <tr>
+      <tbody class="shinobi-skill-body" id="shinobi-skill-body">
+        <tr class="skill-lows">
           <td class="back-fill">2</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">絡繰術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">騎乗術</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">生存術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">医術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">兵糧術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">異形化</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">3</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2"class="skill-column">火術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">砲術</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">潜伏術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">毒術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">鳥獣術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">召喚術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">4</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">水術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">手裏剣術</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">遁走術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">罠術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">野戦術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">死霊術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">5</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">針術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">手練</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">盗聴術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">調査術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">地の利</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">結界術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">6</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">仕込み</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">身体操術</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">腹話術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">詐術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">意気</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">封術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">7</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">衣装術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">歩法</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">隠形術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">対人術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">用兵術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">言霊術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">8</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">縄術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">走法</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">変装術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">遊芸</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">記憶術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">幻術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">9</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">登術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">飛術</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">香術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">九ノ一術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">見敵術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">瞳術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">10</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">拷問術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">骨法術</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">分身の術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">傀儡の術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">暗号術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">千里眼の術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">11</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">壊器術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">刀術</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">隠蔽術</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">流言の術</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">伝達術</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">憑依術</th>
         </tr>
-        <tr>
+        <tr class="skill-lows">
           <td class="back-fill">12</td>
-          <th class="blank-spaece-0"></th>
+          <th class="blank-space-0 blank"></th>
           <th colspan="2" class="skill-column">掘削術</th>
-          <th class="blank-spaece-A"></th>
+          <th class="blank-space-A blank"></th>
           <th colspan="2" class="skill-column">怪力</th>
-          <th class="blank-spaece-B"></th>
+          <th class="blank-space-B blank"></th>
           <th colspan="2" class="skill-column">第六感</th>
-          <th class="blank-spaece-C"></th>
+          <th class="blank-space-C blank"></th>
           <th colspan="2" class="skill-column">経済力</th>
-          <th class="blank-spaece-D"></th>
+          <th class="blank-space-D blank"></th>
           <th colspan="2" class="skill-column">人脈</th>
-          <th class="blank-spaece-E"></th>
+          <th class="blank-space-E blank"></th>
           <th colspan="2" class="skill-column">呪術</th>
         </tr>
         <tr>
-          <th colspan="19"><%= form.check_box :skill_space_bottom, id: "blank-bottom" %></th>
+          <th id="blank-space-bottom blank" colspan="19"><%= form.check_box :skill_space_bottom, id: "blank-bottom" %></th>
         </tr>
       </tbody>
     </table>
     <div class="master-skill-form">
       <h3 class="master-skill-title">習得技能</h3>
-      <div class="master-skill-1">
-        <%= form.text_field :skill_1, class: "skill-learn hidden" %>
-      </div>
-      <div class="master-skill-2">
-        <%= form.text_field :skill_2, class: "skill-learn hidden" %>
-      </div>
-      <div class="master-skill-3">
-        <%= form.text_field :skill_3, class: "skill-learn hidden" %>
-      </div>
-      <div class="master-skill-4">
-        <%= form.text_field :skill_4, class: "skill-learn hidden" %>
-      </div>
-      <div class="master-skill-5">
-        <%= form.text_field :skill_5, class: "skill-learn hidden" %>
-      </div>
-      <div class="master-skill-6">
-        <%= form.text_field :skill_6, class: "skill-learn hidden" %>
-      </div>
-      <div class="master-skill-7">
-        <%= form.text_field :skill_7, class: "skill-learn hidden" %>
-      </div>
-      <div class="master-skill-8">
-        <%= form.text_field :skill_8, class: "skill-learn hidden" %>
-      </div>
-      <input type="button" value="最下行を削除" class="hidden-btn">
+      <% 7.times do |t|%>
+        <div class="master-skill-<%= t + 1 %>">
+          <%= form.text_field :"skill_#{t + 1}", class: "skill-learn hidden" %>
+        </div>
+      <% end %>
     </div>
   </div>
 
@@ -328,127 +314,38 @@
           <th>効果</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th><%= form.check_box :arts_secret_1, id: "secret-arts-1" %></th>
-          <td><%= form.text_field :arts_name_1, value: "接近戦攻撃", class: "arts-name" %></td>
-          <td>
-            <%= form.collection_select( :arts_type_1, Type.all, :id, :name, {}, {}) %>
-          </td>
-          <td><%= form.text_field :arts_skill_1, placeholder: "自由", class: "arts-skill" %></td>
-          <td><%= form.text_field :arts_range_1, value: "1", class: "arts-short" %></td>
-          <td><%= form.text_field :arts_cost_1, value: "なし", class: "arts-short" %></td>
-          <td><%= form.text_area :arts_effect_1, cols: "30", value: "接近戦1点ダメージを与える。", id: "arts-effect-1", class: "arts-effect" %></td>
-        </tr>
-        <tr class="hidden">
-          <th><input type="checkbox" id="secret-arts-2"></th>
-          <td><input type="text" class="arts-name"></td>
-          <td>
-            <select>
-              <option>攻撃</option>
-              <option>サポート</option>
-              <option>装備</option>
-            </select>
-          </td>
-          <td><input type="text" class="arts-skill"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><textarea cols="30" id="arts-effect-2" class="arts-effect"></textarea></td>
-        </tr>
-        <tr class="hidden">
-          <th><input type="checkbox" id="secret-arts-3"></th>
-          <td><input type="text" class="arts-name"></td>
-          <td>
-            <select>
-              <option>攻撃</option>
-              <option>サポート</option>
-              <option>装備</option>
-            </select>
-          </td>
-          <td><input type="text" class="arts-skill"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><textarea cols="30" id="arts-effect-3" class="arts-effect"></textarea></td>
-        </tr>
-        <tr class="hidden">
-          <th><input type="checkbox" id="secret-arts-4"></th>
-          <td><input type="text" class="arts-name"></td>
-          <td>
-            <select>
-              <option>攻撃</option>
-              <option>サポート</option>
-              <option>装備</option>
-            </select>
-          </td>
-          <td><input type="text" class="arts-skill"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><textarea cols="30" id="arts-effect-4" class="arts-effect"></textarea></td>
-        </tr>
-        <tr class="hidden">
-          <th><input type="checkbox" id="secret-arts-5"></th>
-          <td><input type="text" class="arts-name"></td>
-          <td>
-            <select>
-              <option>攻撃</option>
-              <option>サポート</option>
-              <option>装備</option>
-            </select>
-          </td>
-          <td><input type="text" class="arts-skill"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><textarea cols="30" id="arts-effect-5" class="arts-effect"></textarea></td>
-        </tr>
-        <tr class="hidden">
-          <th><input type="checkbox" id="secret-arts-6"></th>
-          <td><input type="text" class="arts-name"></td>
-          <td>
-            <select>
-              <option>攻撃</option>
-              <option>サポート</option>
-              <option>装備</option>
-            </select>
-          </td>
-          <td><input type="text" class="arts-skill"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><textarea cols="30" id="arts-effect-6" class="arts-effect"></textarea></td>
-        </tr>
-        <tr class="hidden">
-          <th><input type="checkbox" id="secret-arts-7"></th>
-          <td><input type="text" class="arts-name"></td>
-          <td>
-            <select>
-              <option>攻撃</option>
-              <option>サポート</option>
-              <option>装備</option>
-            </select>
-          </td>
-          <td><input type="text" class="arts-skill"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><textarea cols="30" id="arts-effect-7" class="arts-effect"></textarea></td>
-        </tr>
-        <tr class="hidden">
-          <th><input type="checkbox" id="secret-arts-8"></th>
-          <td><input type="text" class="arts-name"></td>
-          <td>
-            <select>
-              <option>攻撃</option>
-              <option>サポート</option>
-              <option>装備</option>
-            </select>
-          </td>
-          <td><input type="text" class="arts-skill"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><input type="text" class="arts-short"></td>
-          <td><textarea cols="30" id="arts-effect-8" class="arts-effect"></textarea></td>
-        </tr>
+      <tbody id="arts-form">
+        <% 7.times do |t|%>
+          <% if t == 0 %>
+            <tr class="arts-rows">
+              <td><%= form.check_box :"arts_secret_#{t + 1}", class:"secret-arts", id: "secret-arts-#{t + 1}" %></td>
+              <td><%= form.text_field :"arts_name_#{t + 1}", value: "接近戦攻撃", class: "arts-name" %></td>
+              <td>
+                <%= form.collection_select( :"arts_type_#{t + 1}", Type.all, :id, :name, {}, {}) %>
+              </td>
+              <td><%= form.text_field :"arts_skill_#{t + 1}", placeholder: "自由", class: "arts-skill" %></td>
+              <td><%= form.text_field :"arts_range_#{t + 1}", value: "1", class: "arts-short" %></td>
+              <td><%= form.text_field :"arts_cost_#{t + 1}", value: "なし", class: "arts-short" %></td>
+              <td><%= form.text_area :"arts_effect_#{t + 1}", cols: "30", value: "接近戦1点ダメージを与える。", id: "arts-effect-#{t + 1}", class: "arts-effect" %></td>
+            </tr>
+          <% else %>
+            <tr class="arts-rows" style="display:none">
+              <td><%= form.check_box :"arts_secret_#{t + 1}", class:"secret-arts", id: "secret-arts-#{t + 1}" %></td>
+              <td><%= form.text_field :"arts_name_#{t + 1}", class: "arts-name" %></td>
+              <td>
+                <%= form.collection_select( :"arts_type_#{t + 1}", Type.all, :id, :name, {}, {}) %>
+              </td>
+              <td><%= form.text_field :"arts_skill_#{t + 1}", class: "arts-skill" %></td>
+              <td><%= form.text_field :"arts_range_#{t + 1}", class: "arts-short" %></td>
+              <td><%= form.text_field :"arts_cost_#{t + 1}", class: "arts-short" %></td>
+              <td><%= form.text_area :"arts_effect_#{t + 1}", cols: "30", id: "arts-effect-#{t + 1}", class: "arts-effect" %></td>
+            </tr>
+          <% end %>
+        <% end %>
       </tbody>
     </table>
-    <input type="button" value="行を追加(最大8個)" class="hidden-btn" id="add-arts-btn">
-    <input type="button" value="最下行を削除" class="hidden-btn">
+    <input type="button" value="行を追加(最大7個)" class="hidden-btn" id="add-arts-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn" id="dec-arts-btn">
   </div>
 
   <div class="shinobi-background-form">
@@ -465,21 +362,27 @@
         </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><%= form.text_field :background_1 %></td>
-        <td>
-          <%= form.collection_select(:background_features_1, Features.all, :id, :name, {}, {}) %>
-        </td>
-        <td><%= form.text_field :background_point_1, class: "background-short" %></td>
-        <td><%= form.text_area :background_effect_1, class: "background-effect" %></td>
-      </tr>
+        <% 10.times do |t| %>
+          <% if t == 0 %>
+            <tr class="background-row">
+          <% else %>
+            <tr class="background-row hidden">
+          <% end %>
+            <td><%= form.text_field :"background_#{t + 1}" ,class: "background-name" %></td>
+            <td>
+              <%= form.collection_select(:"background_features_#{t + 1}", Features.all, :id, :name, {}, {}) %>
+            </td>
+            <td><%= form.text_field :"background_point_#{t + 1}", class: "background-short" %></td>
+            <td><%= form.text_area :"background_effect_#{t + 1}", class: "background-effect" %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
-    <input type="button" value="行を追加(最大10個)" class="hidden-btn">
-    <input type="button" value="最下行を削除" class="hidden-btn">
+    <input type="button" value="行を追加(最大10個)" class="hidden-btn" id="add-background-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn" id="dec-background-btn">
   </div>
 
-  <div class="shinobi-mystery-form secret-form">
+  <div class="shinobi-mystery-form secret-form" id="mystery-form">
     <table>
       <thead>
         <tr>
@@ -493,19 +396,25 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><%= form.text_area :mystery_name_1, class: "mystery-name" %></td>
-          <td><%= form.text_area :mystery_skill_1, class: "mystery-skill" %></td>
-          <td><%= form.text_area :mystery_effect_1, class: "mystery-effect" %></td>
-          <td><%= form.text_area :mystery_directing_1, class: "mystery-directing" %></td>
-        </tr>
+        <% 2.times do |t|%>
+          <% if t == 0 %>
+            <tr class="mystery-rows">
+          <% else %>
+            <tr class="mystery-rows hidden">
+          <% end %>
+            <td><%= form.text_area :"mystery_name_#{t +1}", class: "mystery-name" %></td>
+            <td><%= form.text_area :"mystery_skill_#{t + 1}", class: "mystery-skill" %></td>
+            <td><%= form.text_area :"mystery_effect_#{t + 1}", class: "mystery-effect" %></td>
+            <td><%= form.text_area :"mystery_directing_#{t + 1}", class: "mystery-directing" %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     <input type="button" value="行を追加(最大2個)" class="hidden-btn" id="add-mystery-btn">
-    <input type="button" value="最下行を削除" class="hidden-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn" id="dec-mystery-btn">
   </div>
 
-  <div class="shinobi-items-form secret-form">
+  <div class="shinobi-items-form secret-form" id="item-form">
     <table>
       <thead>
         <tr>
@@ -518,35 +427,35 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><%= form.text_field :item_name_1, value: "兵糧丸", class: "item-name" %></td>
-          <td><%= form.text_field :item_number_1, class: "item-number" %></td>
-          <td><%= form.text_field :item_effect_1, value: "いつでも使用できる。このアイテムを使用すると自分の【生命力】１点か変調１つを回復することができる。", class: "item-effect" %>
-        </tr>
-        <tr>
-          <td><%= form.text_field :item_name_2, value: "神通丸", class: "item-name" %></td>
-          <td><%= form.text_field :item_number_2, class: "item-number" %></td>
-          <td><%= form.text_field :item_effect_2, value: "自分が行為判定のサイコロを振ったときに使用できる。そのサイコロを振り直すことができる。", class: "item-effect" %>
-        </tr>
-        <tr>
-          <td><%= form.text_field :item_name_3, value: "遁甲符", class: "item-name" %></td>
-          <td><%= form.text_field :item_number_3, class: "item-number" %></td>
-          <td><%= form.text_field :item_effect_3, value: "自分以外の誰かが行為判定のサイコロを振ったときに使用できる。そのサイコロを振り直すことができる。", class: "item-effect" %>
-        </tr>
-        <tr class="hidden">
-          <td><%= form.text_field :item_name_4, class: "item-name" %></td>
-          <td><%= form.text_field :item_number_4, class: "item-number" %></td>
-          <td><%= form.text_field :item_effect_4, class: "item-effect" %></td>
-        <tr>
-        <tr class="hidden">
-          <td><%= form.text_field :item_name_5, class: "item-name" %></td>
-          <td><%= form.text_field :item_number_5, class: "item-number" %></td>
-          <td><%= form.text_field :item_effect_5, class: "item-effect" %></td>
-        <tr>
+        <% 5.times do |t|%>
+          <% case t %>
+            <% when 0 %>
+              <% name = "兵糧丸" %>
+              <% effect = "いつでも使用できる。このアイテムを使用すると自分の【生命力】１点か変調１つを回復することができる。" %>
+            <% when 1 %>
+              <% name = "神通丸" %>
+              <% effect = "自分が行為判定のサイコロを振ったときに使用できる。そのサイコロを振り直すことができる。" %>
+            <% when 2 %>
+              <% name = "遁甲符" %>
+              <% effect = "自分以外の誰かが行為判定のサイコロを振ったときに使用できる。そのサイコロを振り直すことができる。" %>
+          <% end %>
+          <% if t <= 2 %>
+            <tr class="item-rows">
+              <td><%= form.text_field :"item_name_#{t + 1}", value: "#{name}", class: "item-name" %></td>
+              <td><%= form.text_field :"item_number_#{t + 1}", class: "item-number" %></td>
+              <td><%= form.text_field :"item_effect_#{t + 1}", value: "#{effect}", class: "item-effect" %></td>
+          <% else %>
+            <tr class="item-rows hidden">
+              <td><%= form.text_field :"item_name_#{t + 1}", class: "item-name" %></td>
+              <td><%= form.text_field :"item_number_#{t + 1}", class: "item-number" %></td>
+              <td><%= form.text_field :"item_effect_#{t + 1}", class: "item-effect" %></td>
+          <% end %>
+          </tr>
+        <% end %>
       </tbody>
     </table>
     <input type="button" value="行を追加(最大5個)" class="hidden-btn" id="add-item-btn">
-    <input type="button" value="最下行を削除" class="hidden-btn">
+    <input type="button" value="最下行を削除" class="hidden-btn" id="dec-item-btn">
   </div>
 
   <div class="form-btn hidden-btn">

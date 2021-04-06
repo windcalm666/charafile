@@ -1,7 +1,17 @@
 <div class="wrapper">
   <%= render "users/side-bar" %>
 
+  <div class="main-page">
+
   <%= render partial: "form", locals: { cthulhu: @cthulhu } %>
+  
+  </div>
+
+  <style>
+    #cthulhu-random-btn {
+      display:none;
+    }
+  </style>
 
 </div>
 

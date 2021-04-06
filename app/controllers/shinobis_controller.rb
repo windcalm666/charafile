@@ -41,7 +41,7 @@ class ShinobisController < ApplicationController
 
   def shinobi_params
     params.require(:shinobi).permit(:name, :age, :sex, :school_id, :under_school, :school_style, :job, :belief, :origin, :shinobi_class, :enemy,
-    :achievement, :skill_spaece_0, :skill_spaece_1, :skill_spaece_2, :skill_spaece_3, :skill_spaece_4, :skill_spaece_5, :skill_1, :skill_2,
+    :achievement, :skill_space_0, :skill_space_1, :skill_space_2, :skill_space_3, :skill_space_4, :skill_space_5, :skill_space_bottom, :skill_1, :skill_2,
     :skill_3, :skill_4, :skill_5, :skill_6, :skill_7,:arts_secret_1, :arts_secret_2, :arts_secret_3, :arts_secret_4, :arts_secret_5,
     :arts_secret_6, :arts_secret_7, :arts_name_1, :arts_name_2, :arts_name_3, :arts_name_4, :arts_name_5, :arts_name_6, :arts_name_7,
     :arts_type_1, :arts_type_2, :arts_type_3, :arts_type_4, :arts_type_5, :arts_type_6, :arts_type_7, :arts_skill_1, :arts_skill_2, :arts_skill_3,

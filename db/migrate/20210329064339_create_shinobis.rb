@@ -15,13 +15,13 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.string :enemy
       t.integer :achievement
 
-      t.boolean :skill_spaece_0
-      t.boolean :skill_spaece_1
-      t.boolean :skill_spaece_2
-      t.boolean :skill_spaece_3
-      t.boolean :skill_spaece_4
-      t.boolean :skill_spaece_5
-      t.boolean :skill_spaece_bottom
+      t.boolean :skill_space_0
+      t.boolean :skill_space_1
+      t.boolean :skill_space_2
+      t.boolean :skill_space_3
+      t.boolean :skill_space_4
+      t.boolean :skill_space_5
+      t.boolean :skill_space_bottom
 
       t.string :skill_1
       t.string :skill_2
@@ -141,11 +141,11 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.integer :item_number_3
       t.integer :item_number_4
       t.integer :item_number_5
-      t.text :item_effest_1
-      t.text :item_effest_2
-      t.text :item_effest_3
-      t.text :item_effest_4
-      t.text :item_effest_5
+      t.text :item_effect_1
+      t.text :item_effect_2
+      t.text :item_effect_3
+      t.text :item_effect_4
+      t.text :item_effect_5
 
       t.timestamps
     end
