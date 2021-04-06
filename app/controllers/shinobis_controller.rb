@@ -1,5 +1,6 @@
 class ShinobisController < ApplicationController
   before_action :find_shinobi, only: [:show, :edit, :update, :destroy]
+  before_action :kick_other_user, only: [:edit, :update, :destroy]
 
   def new
     @shinobi = Shinobi.new
@@ -31,6 +32,8 @@ class ShinobisController < ApplicationController
   end
 
   def destroy
+    @shinobi.destroy
+    redirect_to root_path
   end
 
   private
@@ -38,6 +41,11 @@ class ShinobisController < ApplicationController
   def find_shinobi
     @shinobi = Shinobi.find(params[:id])
   end
+
+  def kick_other_user
+    if @shinobi.user.id != current_user.id
+      redirect_to root_path
+    end
 
   def shinobi_params
     params.require(:shinobi).permit(:name, :age, :sex, :school_id, :under_school, :school_style, :job, :belief, :origin, :shinobi_class, :enemy,
@@ -56,7 +64,7 @@ class ShinobisController < ApplicationController
     :background_effect_3, :background_effect_4, :background_effect_5, :background_effect_6, :background_effect_7, :background_effect_8,
     :background_effect_9, :background_effect_10, :mystery_name_1, :mystery_name_2, :mystery_skill_1, :mystery_skill_2, :mystery_effect_1,
     :mystery_effect_2, :mystery_directing_1, :mystery_directing_2, :item_name_1, :item_name_2, :item_name_3, :item_name_4, :item_name_5,
-    :item_number_1, :item_number_2, :item_number_3, :item_number_4, :item_number_5,:item_effest_1, :item_effest_2, :item_effest_3,
-    :item_effest_4, :item_effest_5, :image).merge(user_id: current_user.id)
+    :item_number_1, :item_number_2, :item_number_3, :item_number_4, :item_number_5,:item_effect_1, :item_effect_2, :item_effect_3,
+    :item_effect_4, :item_effect_5, :image).merge(user_id: current_user.id)
   end
 end

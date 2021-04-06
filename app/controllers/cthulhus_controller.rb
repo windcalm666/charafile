@@ -1,5 +1,6 @@
 class CthulhusController < ApplicationController
   before_action :find_cthulhu, only: [:edit, :update, :show, :destroy]
+  before_action :kick_other_user, only: [:edit, :update, :destroy]
 
   def new
     @cthulhu = Cthulhu.new
@@ -52,5 +53,10 @@ class CthulhusController < ApplicationController
   def find_cthulhu
     @cthulhu = Cthulhu.find(params[:id])
   end
+
+  def kick_other_user
+    if @cthulhu.user.id != current_user.id
+      redirect_to root_path
+    end
 
 end
