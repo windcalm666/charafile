@@ -29,7 +29,6 @@ RSpec.describe "Shinobis", type: :system do
       expect{find("input[name='commit']").click}.to change{ Shinobi.count }.by(0)
       expect(current_path).to eq(shinobis_path)
     end
-    end
   end
 
 
