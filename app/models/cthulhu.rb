@@ -5,8 +5,12 @@ class Cthulhu < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :job
-    validates :age
     validates :sex
+    validates :damage_bonus
+  end
+
+  with_options presence: true, numericality: {integer_only: true} do
+    validates :age
     validates :str
     validates :con
     validates :pow
@@ -20,9 +24,7 @@ class Cthulhu < ApplicationRecord
     validates :idea
     validates :knowledge
     validates :magick_points
-    validates :damage_bonus
     validates :life_points
-    validates :user_id
   end
   
 end
