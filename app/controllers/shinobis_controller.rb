@@ -46,6 +46,7 @@ class ShinobisController < ApplicationController
     if @shinobi.user.id != current_user.id
       redirect_to root_path
     end
+  end
 
   def shinobi_params
     params.require(:shinobi).permit(:name, :age, :sex, :school_id, :under_school, :school_style, :job, :belief, :origin, :shinobi_class, :enemy,
