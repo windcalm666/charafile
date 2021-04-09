@@ -84,16 +84,16 @@ FactoryBot.define do
       background_features_8 {1}
       background_features_9 {1}
       background_features_10 {1}
-      backgronud_point_1 {1}
-      backgronud_point_2 {1}
-      backgronud_point_3 {1}
-      backgronud_point_4 {1}
-      backgronud_point_5 {1}
-      backgronud_point_6 {1}
-      backgronud_point_7 {1}
-      backgronud_point_8 {1}
-      backgronud_point_9 {1}
-      backgronud_point_10 {1}
+      background_point_1 {1}
+      background_point_2 {1}
+      background_point_3 {1}
+      background_point_4 {1}
+      background_point_5 {1}
+      background_point_6 {1}
+      background_point_7 {1}
+      background_point_8 {1}
+      background_point_9 {1}
+      background_point_10 {1}
       background_effect_1 {1}
       background_effect_2 {1}
       background_effect_3 {1}

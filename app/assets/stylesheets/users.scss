@@ -44,8 +44,21 @@
   padding:10px;
 }
 
+.character-area {
+  height: 65%;
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#sort-system-select {
+  margin: 0 0 0 auto;
+}
+
 .character-window {
-  height: 60%;
+  height: 100%;
   width: 100%;
   background-color: #ffffff;
 }

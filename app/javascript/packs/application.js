@@ -15,6 +15,7 @@ require("../arts_form")
 require("../background_form")
 require("../mystery_form")
 require("../item_form")
+require("../sort_character")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
