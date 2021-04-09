@@ -101,16 +101,16 @@ class CreateShinobis < ActiveRecord::Migration[6.0]
       t.integer :background_features_8
       t.integer :background_features_9
       t.integer :background_features_10
-      t.string :backgronud_point_1
-      t.string :backgronud_point_2
-      t.string :backgronud_point_3
-      t.string :backgronud_point_4
-      t.string :backgronud_point_5
-      t.string :backgronud_point_6
-      t.string :backgronud_point_7
-      t.string :backgronud_point_8
-      t.string :backgronud_point_9
-      t.string :backgronud_point_10
+      t.string :background_point_1
+      t.string :background_point_2
+      t.string :background_point_3
+      t.string :background_point_4
+      t.string :background_point_5
+      t.string :background_point_6
+      t.string :background_point_7
+      t.string :background_point_8
+      t.string :background_point_9
+      t.string :background_point_10
       t.text :background_effect_1
       t.text :background_effect_2
       t.text :background_effect_3
