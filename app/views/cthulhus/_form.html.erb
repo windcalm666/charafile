@@ -13,9 +13,9 @@
         <% end %>
         <th colspan="2" class="large-label">設定</th>
         <td class="image-area"rowspan="7"><div  class="image-area"><%= image_tag cthulhu.image.variant(resize: "250x200") if cthulhu.image.attached? %></div><br>
-          <% unless params[:action] == "edit" %>
+          <% unless params[:action] == "show" %>
             <label>
-              <span class="file-select-button">立ち絵</span>
+              <span class="file-select-button hidden-btn">立ち絵</span>
               <%= form.file_field :image, class: "hidden" %>
             </label>
           <% end %>
