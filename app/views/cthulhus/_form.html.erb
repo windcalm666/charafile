@@ -13,12 +13,12 @@
         <% end %>
         <th colspan="2" class="large-label">設定</th>
         <td class="image-area"rowspan="7"><div  class="image-area"><%= image_tag cthulhu.image.variant(resize: "250x200") if cthulhu.image.attached? %></div><br>
-         <label>
-            <% unless @cthulhu.image.attached? %>
+          <% unless params[:action] == "edit" %>
+            <label>
               <span class="file-select-button">立ち絵</span>
               <%= form.file_field :image, class: "hidden" %>
-            <% end %>
-          </label>
+            </label>
+          <% end %>
         </td>
       </tr>
       <tr>
