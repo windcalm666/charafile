@@ -69,6 +69,7 @@
 }
 
 .character-list, .result-list {
+  height: 100%;
   display:flex;
   flex-wrap: wrap;
   overflow: scroll;
