@@ -15,6 +15,7 @@ RSpec.describe "Shinobis", type: :system do
       find("#shinobi-school-select").find("option[value='3']").select_option
       expect{find("input[name='commit']").click}.to change{ Shinobi.count }.by(1)
       expect(current_path).to eq(root_path)
+      expect(page).to have_content(@shinobi.name)
     end
   end
 

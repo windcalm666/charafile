@@ -25,21 +25,8 @@
       <h3 class="follower-index"><%= link_to "フォロワー一覧", followers_user_path(@user.id) %>
     </div>
 
-    <div class="character-window">
-      <h3 class="character-title">既存キャラクター一覧</h3>
-      <ul class="character-list">
-        <% @cthulhus.each do |coc| %>
-        <li class="list">
-          <%= link_to cthulhu_path(coc.id) do %>
-            <%= image_tag coc.image, class: "character-sample-image" if coc.image.attached? %>
-            <p><%= coc.name %></p>
-            <p>クトゥルフ神話TRPG</p>
-            <p><%= coc.created_at %></p>
-          <% end %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
+    <%= render partial: "character_window", locals: { cthulhus: @cthulhus, shinobis: @shinobis } %>
+    
   </div>
 </div>
 

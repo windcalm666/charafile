@@ -35,6 +35,7 @@ RSpec.describe "Cthulhus", type: :system do
       fill_in 'damage-bonus', with: @cthulhu.damage_bonus
       expect{find("input[name='commit']").click}.to change{ Cthulhu.count }.by(1)
       expect(current_path).to eq(root_path)
+      expect(page).to have_content(@cthulhu.name)
     end
   end
 
