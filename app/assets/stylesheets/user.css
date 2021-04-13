@@ -1,14 +1,28 @@
+header {
+  padding: 10px auto 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 50px;
+  font-family: "ヒラギノ丸ゴ Pro W4","Hiragino Maru Gothic Pro",sans-serif;
+  border-bottom:2px solid #98cc65;
+}
+
+body {
+  background-color: #009bc6;
+}
+
 .account-page .account-page__inner {
   width: 980px;
-  margin: 60px auto;
+  margin: 20px auto;
   padding: 60px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #7acbe1;
+  border: 1px solid #98cc65;
   border-radius: 5px;
 }
 .account-page .account-page__inner .account-page__inner--left, .account-page .account-page__inner .account-page__inner--right {
   float: left;
   width: 50%;
+  color: #ffffff;
 }
 .account-page .account-page__inner:after {
   clear: both;
@@ -36,7 +50,7 @@
 .account-page .account-page__header .btn {
   margin-top: 20px;
   color: #fff;
-  background-color: #ccc;
+  background-color: #009bc6;
   font-size: 14px;
 }
 .account-page .field {
