@@ -11,7 +11,7 @@
       <% cthulhus.each do |coc| %>
         <li class="list cthulhu">
           <%= link_to cthulhu_path(coc.id) do %>
-            <%= image_tag coc.image, class: "character-sample-image" if coc.image.attached? %>
+            <%= image_tag coc.image.variant(resize: "150x150"), class: "character-sample-image" if coc.image.attached? %>
             <p><%= coc.name %></p>
             <p>クトゥルフ神話TRPG</p>
             <p><%= coc.created_at %></p>
@@ -21,7 +21,7 @@
       <% shinobis.each do |ninja| %>
         <li class="list shinobi">
           <%= link_to shinobi_path(ninja.id) do %>
-            <%= image_tag ninja.image, class: "character-sample-image" if ninja.image.attached? %>
+            <%= image_tag ninja.image.variant(resize: "150x150"), class: "character-sample-image" if ninja.image.attached? %>
             <p><%= ninja.name %></p>
             <p>シノビガミ</p>
             <p><%= ninja.created_at %></p>
