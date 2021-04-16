@@ -23,21 +23,21 @@
       </tr>
       <tr>
         <th class="form-label">名前</th>
-        <td colspan="3"><%= form.text_field :name, class: "person" %></td>
+        <td colspan="3"><%= form.text_field :name, placeholder: "必須", class: "person" %></td>
         <td colspan="2" rowspan="6"><%= form.text_area :origin, rows: "10", class: "long-person"%></td>
       </tr>
       <tr>
         <th class="form-label">職業</th>
-        <td colspan="3"><%= form.text_field :job, class: "person" %></td>
+        <td colspan="3"><%= form.text_field :job, placeholder: "必須", class: "person" %></td>
       </tr>
       <tr>
         <th class="form-label">年齢</th>
-        <td><%= form.text_field :age, class: "short-person" %></td>
+        <td><%= form.text_field :age, placeholder: "必須", class: "short-person" %></td>
         <td rowspan="4"><%= form.text_area :items, rows: "4", placeholder: "所持品", class: "person" %></td>
       </tr>
       <tr>
         <th class="form-label">性別</th>
-        <td><%= form.text_field :sex, class: "short-person" %></td>
+        <td><%= form.text_field :sex, placeholder: "必須", class: "short-person" %></td>
       </tr>
       <tr>
         <th class="form-label">職業P</th>
@@ -51,7 +51,7 @@
   </div>
   <div class="parameter-status">
     <div class="label-flex">
-      <h3>ステータス</h3>
+      <h3>ステータス(必須)</h3>
       <input type="button" value="ランダム決定" class="hidden-btn" id="cthulhu-random-btn"></h3>
     </div>
     <table class="cthulhu-status">

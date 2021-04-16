@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <th class="shinobi-short-label">名前</th>
-          <td colspan="3"><%= form.text_field :name, class: "shinobi-large-person" %></td>
+          <td colspan="3"><%= form.text_field :name, placeholder: "必須", class: "shinobi-large-person" %></td>
           <td colspan="2" rowspan="7"><%= form.text_area :origin, placeholder: "キャラクター設定", rows: "11", cols: "30" %>
           <td colspan="2" rowspan="7" class="shinobi-image-column"><div class="image-area"><%= image_tag shinobi.image.variant(resize: "200x250") if shinobi.image.attached? %></div></td>
         </tr>
